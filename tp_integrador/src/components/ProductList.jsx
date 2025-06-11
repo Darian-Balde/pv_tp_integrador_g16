@@ -1,6 +1,7 @@
-import React from "react";
+ import React from "react"; 
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../FavoritesSlice";
+import "../styles/ProductList.css";
 
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector(
@@ -20,9 +21,11 @@ const ProductList = () => {
   if (!products.length) return <p>No hay productos disponibles.</p>;
 
   return (
-    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+  <div className="product-container">
+
+    <table className="product-table">
       <thead>
-        <tr>
+        <tr className="product-header-row">
           <th>#</th>
           <th>Favorito</th>
           <th>Imagen</th>
@@ -34,41 +37,37 @@ const ProductList = () => {
       </thead>
       <tbody>
         {products.map((p) => (
-          <tr key={p.id}>
-            <td>{p.id}</td>
-            <td style={{ textAlign: "center" }}>
+          <tr key={p.id} className="product-row">
+            <td className="product-id">{p.id}</td>
+            <td style={{ textAlign: "center" }} className="favorite-cell">
               <button
                 onClick={() => handleToggle(p)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                }}
+                className="favorite-button"
               >
                 {isFavorite(p.id) ? "❤️" : "🤍"}
               </button>
             </td>
-            <td>
+            <td className="image-cell">
               <img
                 src={p.image}
                 alt={p.title}
-                width="60"
-                height="60"
-                style={{ objectFit: "contain" }}
+                className="product-image"
               />
             </td>
-            <td>{p.title}</td>
-            <td>{p.category}</td>
-            <td>${p.price.toFixed(2)}</td>
-            <td>
+            <td className="product-title">{p.title}</td>
+            <td className="product-category">{p.category}</td>
+            <td className="product-price">${p.price.toFixed(2)}</td>
+            <td className="product-rating">
               {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
             </td>
           </tr>
         ))}
       </tbody>
     </table>
-  );
+  </div>
+);
+
+  
 };
 
-export default ProductList;
+export default ProductList;                    

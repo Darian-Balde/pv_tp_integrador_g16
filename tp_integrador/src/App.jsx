@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ProductList from "./components/ProductList";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "./ProductsSlice";
+import "./styles/ProductList.css"; 
 
 const App = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,9 @@ const App = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  return (
-    <div>
-      <h1>Lista de Productos</h1>
+ return (
+    <div className="page-wrapper">
+      <h1 className="main-title">Lista de Productos</h1>
       <ProductList />
     </div>
   );
