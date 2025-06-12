@@ -1,9 +1,9 @@
-/*Mejore la Ubicacion del icono de favoritos, falta agregar css a todo lo demas agregado*/
-
-import React from "react"; 
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFavorite } from "../FavoritesSlice";
-import "../styles/ProductList.css";
+import { toggleFavorite } from "../FavoritesSlice"; // 👈 importá esto
+import { Link } from "react-router-dom";
+
+
 
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector(
@@ -18,56 +18,69 @@ const ProductList = () => {
     dispatch(toggleFavorite(product));
   };
 
+
   if (loading) return <p>Cargando productos…</p>;
   if (error) return <p>Error: {error}</p>;
   if (!products.length) return <p>No hay productos disponibles.</p>;
 
   return (
-  <div className="product-container">
-
-    <table className="product-table">
-<thead>
-  <tr className="product-header-row">
-    <th>#</th>
-    <th>Imagen</th>
-    <th>Título</th>
-    <th>Categoría</th>
-    <th>Precio</th>
-    <th>Rating</th>
-    <th>Favorito</th>
-  </tr>
-</thead>
-<tbody>
-  {products.map((p) => (
-    <tr key={p.id} className="product-row">
-      <td>{p.id}</td>
-      <td>
-        <img
-          src={p.image}
-          alt={p.title}
-          className="product-image"
-          style={{ maxWidth: "50px", height: "auto" }}
-        />
-      </td>
-      <td style={{ maxWidth: "200px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-        {p.title}
-      </td>
-      <td>{p.category}</td>
-      <td>${p.price.toFixed(2)}</td>
-      <td>{p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})</td>
-      <td style={{ textAlign: "center" }}>
-        <button onClick={() => handleToggle(p)} className="favorite-button" style={{ fontSize: "1.2rem" }}>
-          {isFavorite(p.id) ? "❤️" : "🤍"}
-        </button>
-      </td>
-    </tr>
-  ))}
-</tbody>
+    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>FAvorito</th>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Rating</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((p) => (
+            <tr key={p.id}>
+              <td>{p.id}</td>
+              <td style={{ textAlign: "center" }}>
+               <button
+                onClick={() => handleToggle(p)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {isFavorite(p.id) ? "❤️" : "🤍"}
+              </button>
+            </td>
+              <td>
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  width="60"
+                  height="60"
+                  style={{ objectFit: "contain" }}
+                />
+              </td>
+              <td>{p.title}</td>
+              <td>{p.category}</td>
+              <td>${p.price.toFixed(2)}</td>
+              <td>
+                {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
+              </td>
+              <td>
+                <Link to={`/editar/${p.id}`}>
+                  <button style={{ padding: "5px 10px", cursor: "pointer" }}>
+                    Editar
+                  </button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
     </table>
-  </div>
-);
-
-  
+  );
 };
 
-export default ProductList;                    
+export default ProductList;
