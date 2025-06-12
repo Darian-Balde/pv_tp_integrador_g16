@@ -118,6 +118,15 @@ body {
   background-color: #60a1c7;
 }
 
+.fin-lista {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #444;
+  font-style: italic;
+}
+
+
 /* Responsive */
 @media (max-width: 480px) {
   .product-card {

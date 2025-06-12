@@ -24,8 +24,8 @@ const ProductList = () => {
   return (
     <div className="product-container">
       <h1 className="product-title-main">Lista de Productos 🛍️</h1>
-    <div className="product-grid">
-      {products.map((p) => (
+      <div className="product-grid">
+       {products.map((p) => (
         <div className="product-card" key={p.id}>
           <div className="favorite-icon" onClick={() => handleToggle(p)}>
             {isFavorite(p.id) ? "❤️" : "🤍"}
@@ -41,8 +41,10 @@ const ProductList = () => {
             <button className="edit-button">Editar</button>
           </Link>
         </div>
-      ))}
-    </div>
+        ))}
+      </div>
+        <p className="fin-lista">Ha alcanzado el final de la lista. ✨</p>
+
     </div>
   );
 };
