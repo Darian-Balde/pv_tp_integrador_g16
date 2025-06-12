@@ -23,55 +23,28 @@ const ProductList = () => {
 
   return (
     <div className="product-container">
-      <table className="product-table">
-        <thead className="product-header-row">
-          <tr>
-            <th>#</th>
-            <th>Favorito</th>
-            <th>Imagen</th>
-            <th>Título</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-            <th>Rating</th>
-            <th>Editar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((p) => (
-            <tr className="product-row" key={p.id}>
-              <td>{p.id}</td>
-              <td>
-                <button
-                  className="favorite-button"
-                  onClick={() => handleToggle(p)}
-                >
-                  {isFavorite(p.id) ? "❤️" : "🤍"}
-                </button>
-              </td>
-              <td>
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="product-image"
-                />
-              </td>
-              <td className="product-title">{p.title}</td>
-              <td className="product-category">{p.category}</td>
-              <td className="product-price">${p.price.toFixed(2)}</td>
-              <td className="product-rating">
-                {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
-              </td>
-              <td>
-                <Link to={`/editar/${p.id}`}>
-                  <button style={{ padding: "5px 10px", cursor: "pointer" }}>
-                    Editar
-                  </button>
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1 className="product-title-main">Lista de Productos 🛍️</h1>
+      <div className="product-grid">
+       {products.map((p) => (
+        <div className="product-card" key={p.id}>
+          <div className="favorite-icon" onClick={() => handleToggle(p)}>
+            {isFavorite(p.id) ? "❤️" : "🤍"}
+          </div>
+          <img src={p.image} alt={p.title} className="product-image" />
+          <h2 className="product-name">{p.title}</h2>
+          <p className="product-category">{p.category}</p>
+          <p className="product-price">${p.price.toFixed(2)}</p>
+          <p className="product-rating">
+            {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
+          </p>
+          <Link to={`/editar/${p.id}`}>
+            <button className="edit-button">Editar</button>
+          </Link>
+        </div>
+        ))}
+      </div>
+        <p className="fin-lista">Ha alcanzado el final de la lista. ✨</p>
+
     </div>
   );
 };

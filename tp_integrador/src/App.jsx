@@ -22,7 +22,7 @@ const App = () => {
   <Routes>
     <Route path="/" element={
       <div style={{ marginTop: "80px" }}>
-        <h1>Lista de Productos</h1>
+        {/*<h1>Lista de Productos</h1>*/}
         <ProductList />
       </div>
     } />
