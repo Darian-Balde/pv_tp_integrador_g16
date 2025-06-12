@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFavorite } from "../FavoritesSlice";
+import { toggleFavorite } from "../FavoritesSlice"; // 👈 importá esto
+import { Link } from "react-router-dom";
+
+
 
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector(
@@ -15,29 +18,31 @@ const ProductList = () => {
     dispatch(toggleFavorite(product));
   };
 
+
   if (loading) return <p>Cargando productos…</p>;
   if (error) return <p>Error: {error}</p>;
   if (!products.length) return <p>No hay productos disponibles.</p>;
 
   return (
     <table style={{ width: "100%", borderCollapse: "collapse" }}>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Favorito</th>
-          <th>Imagen</th>
-          <th>Título</th>
-          <th>Categoría</th>
-          <th>Precio</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((p) => (
-          <tr key={p.id}>
-            <td>{p.id}</td>
-            <td style={{ textAlign: "center" }}>
-              <button
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>FAvorito</th>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Rating</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((p) => (
+            <tr key={p.id}>
+              <td>{p.id}</td>
+              <td style={{ textAlign: "center" }}>
+               <button
                 onClick={() => handleToggle(p)}
                 style={{
                   background: "none",
@@ -49,24 +54,31 @@ const ProductList = () => {
                 {isFavorite(p.id) ? "❤️" : "🤍"}
               </button>
             </td>
-            <td>
-              <img
-                src={p.image}
-                alt={p.title}
-                width="60"
-                height="60"
-                style={{ objectFit: "contain" }}
-              />
-            </td>
-            <td>{p.title}</td>
-            <td>{p.category}</td>
-            <td>${p.price.toFixed(2)}</td>
-            <td>
-              {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
-            </td>
-          </tr>
-        ))}
-      </tbody>
+              <td>
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  width="60"
+                  height="60"
+                  style={{ objectFit: "contain" }}
+                />
+              </td>
+              <td>{p.title}</td>
+              <td>{p.category}</td>
+              <td>${p.price.toFixed(2)}</td>
+              <td>
+                {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
+              </td>
+              <td>
+                <Link to={`/editar/${p.id}`}>
+                  <button style={{ padding: "5px 10px", cursor: "pointer" }}>
+                    Editar
+                  </button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
     </table>
   );
 };
