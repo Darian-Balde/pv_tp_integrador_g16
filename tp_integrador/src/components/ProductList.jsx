@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFavorite } from "../FavoritesSlice"; // 👈 importá esto
+import { toggleFavorite } from "../FavoritesSlice"; 
 import { Link } from "react-router-dom";
-
-
+import "../styles/ProductList.css";
 
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector(
@@ -18,17 +17,17 @@ const ProductList = () => {
     dispatch(toggleFavorite(product));
   };
 
-
   if (loading) return <p>Cargando productos…</p>;
   if (error) return <p>Error: {error}</p>;
   if (!products.length) return <p>No hay productos disponibles.</p>;
 
   return (
-    <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
+    <div className="product-container">
+      <table className="product-table">
+        <thead className="product-header-row">
           <tr>
             <th>#</th>
-            <th>FAvorito</th>
+            <th>Favorito</th>
             <th>Imagen</th>
             <th>Título</th>
             <th>Categoría</th>
@@ -39,34 +38,27 @@ const ProductList = () => {
         </thead>
         <tbody>
           {products.map((p) => (
-            <tr key={p.id}>
+            <tr className="product-row" key={p.id}>
               <td>{p.id}</td>
-              <td style={{ textAlign: "center" }}>
-               <button
-                onClick={() => handleToggle(p)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                }}
-              >
-                {isFavorite(p.id) ? "❤️" : "🤍"}
-              </button>
-            </td>
+              <td>
+                <button
+                  className="favorite-button"
+                  onClick={() => handleToggle(p)}
+                >
+                  {isFavorite(p.id) ? "❤️" : "🤍"}
+                </button>
+              </td>
               <td>
                 <img
                   src={p.image}
                   alt={p.title}
-                  width="60"
-                  height="60"
-                  style={{ objectFit: "contain" }}
+                  className="product-image"
                 />
               </td>
-              <td>{p.title}</td>
-              <td>{p.category}</td>
-              <td>${p.price.toFixed(2)}</td>
-              <td>
+              <td className="product-title">{p.title}</td>
+              <td className="product-category">{p.category}</td>
+              <td className="product-price">${p.price.toFixed(2)}</td>
+              <td className="product-rating">
                 {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
               </td>
               <td>
@@ -79,7 +71,8 @@ const ProductList = () => {
             </tr>
           ))}
         </tbody>
-    </table>
+      </table>
+    </div>
   );
 };
 
