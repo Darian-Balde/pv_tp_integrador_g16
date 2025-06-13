@@ -19,6 +19,13 @@ const FavoritesList = () => {
             <div className="favorites-list">
                 {favorites.map((p) => (
                     <div key={p.id} className="favorite-card">
+                        <button
+                            onClick={() => handleToggle(p)}  className="favorite-button"
+                            title="Quitar de favoritos"
+                        >
+                            ❤️
+                        </button>
+                        
                         <img src={p.image} alt={p.title} className="favorite-image" />
                         <div className="favorite-info">
                             <h3 className="favorite-title">{p.title}</h3>
@@ -28,12 +35,7 @@ const FavoritesList = () => {
                                 Calificación: {p.rating && p.rating.rate ? p.rating.rate : "N/A"} (
                                 {p.rating && p.rating.count ? p.rating.count : 0})
                             </p>
-                                <button
-                                    onClick={() => handleToggle(p)}  className="favorite-button"
-                                    title="Quitar de favoritos"
-                                    >
-                                    ❤️
-                                </button>
+                                
 
 
                         </div>

@@ -9,7 +9,7 @@ import Favoritos from "./pages/Favoritos";
 import CrearProducto from "./pages/CrearProducto"; 
 import EditarProducto from "./pages/EditarProducto";
 import FavoriteList from "./components/FavoriteList";
-
+import DetalleProducto from "./pages/DetalleProductos";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ const App = () => {
     <Route path="/favoritos" element={<Favoritos />} />
     <Route path="/crear" element={<CrearProducto />} />
     <Route path="/editar/:id" element={<EditarProducto />} />
+    <Route path="/detalle/:id" element={<DetalleProducto />} />
   </Routes>
 </>
   );

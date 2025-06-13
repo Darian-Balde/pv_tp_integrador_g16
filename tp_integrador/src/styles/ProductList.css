@@ -13,7 +13,7 @@ body {
   padding: 2rem 0;
   font-family: "Roboto", sans-serif;
   color: #000000;
-  /*background-image: url('/fondo.jpg');*/
+
  
 }
 
@@ -61,11 +61,10 @@ body {
   text-align: center;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
+  
 }
 
 .product-card:hover {
-  /*transform: translateY(-5px);*/
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -79,7 +78,7 @@ body {
   transition: transform 0.1s ease;
 }
 .favorite-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   
 }
 
@@ -104,9 +103,15 @@ body {
   margin: 0.2rem 0;
 }
 
+.botones-lista {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;  
+  margin-top: 0.5rem;
+} 
+
 /* Botón editar */
 .edit-button {
-  margin-top: 0.5rem;
   padding: 6px 12px;
   border: none;
   background-color: #4b99b8;
@@ -126,6 +131,19 @@ body {
   font-style: italic;
 }
 
+/*Botón Más detalles*/
+.button-detalle {
+  padding: 6px 12px;
+  border: none;
+  background-color: #388e3c; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-detalle:hover {
+  background-color: #4e9652;
+}
 
 /* Responsive */
 @media (max-width: 480px) {

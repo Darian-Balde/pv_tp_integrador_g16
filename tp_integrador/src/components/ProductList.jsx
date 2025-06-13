@@ -32,14 +32,20 @@ const ProductList = () => {
           </div>
           <img src={p.image} alt={p.title} className="product-image" />
           <h2 className="product-name">{p.title}</h2>
-          <p className="product-category">{p.category}</p>
+          {/*<p className="product-category">{p.category}</p>*/}
           <p className="product-price">${p.price.toFixed(2)}</p>
-          <p className="product-rating">
+          {/*<p className="product-rating">
             {p.rating?.rate ?? "N/A"} ({p.rating?.count ?? 0})
-          </p>
-          <Link to={`/editar/${p.id}`}>
-            <button className="edit-button">Editar</button>
-          </Link>
+          </p>*/}
+          
+          <div className="botones-lista">
+            <Link to={`/detalle/${p.id}`}>
+              <button className="button-detalle">Ver más</button>
+            </Link>
+            <Link to={`/editar/${p.id}`}>
+              <button className="edit-button">Editar</button>
+            </Link>
+          </div>
         </div>
         ))}
       </div>
