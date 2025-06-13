@@ -21,22 +21,22 @@ Este proyecto es una aplicación web de productos desarrollada con **React**, **
 - CSS (estilos personalizados)
 
 ## 🗂️ Estructura de carpetas
-src/
-  components/
-    ProductList.jsx
-    FavoriteList.jsx
-    ProductForm.jsx
-    Navbar.jsx
-  pages/
-    Favoritos.jsx
-    CrearProducto.jsx
-    EditarProducto.jsx
-    DetalleProducto.jsx
-  redux/
-    ProductsSlice.jsx
-    FavoritesSlice.jsx
-  App.jsx
-  main.jsx
+- src/
+  - components/
+    - ProductList.jsx
+    - FavoriteList.jsx
+    - ProductForm.jsx
+    - Navbar.jsx
+  - pages/
+    - Favoritos.jsx
+    - CrearProducto.jsx
+    - EditarProducto.jsx
+    - DetalleProducto.jsx
+  - redux/
+    - ProductsSlice.jsx
+    - FavoritesSlice.jsx
+  - App.jsx
+  - main.jsx
 
 ## 💻 INTEGRANTES / Usuario GitHub
 ## BALDELOMAR DARIAN / Darian-Balde
