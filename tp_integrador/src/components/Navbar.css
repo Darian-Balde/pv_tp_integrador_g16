@@ -53,21 +53,6 @@
   background-color: #74944f;
 }
 
-
-/*.navbar a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-  background-color: #333;
-}*/
-
 /* --- Versión responsive --- */
 @media (max-width: 768px) {
   
@@ -108,15 +93,5 @@
   text-decoration: none;
   color: white;
 }
-  /*.navbar {
-    flex-direction: column;
-    height: auto;
-    padding: 1rem 0.5rem;
-    gap: 1rem;
-  }
-
-  .navbar a {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }*/
+  
 }

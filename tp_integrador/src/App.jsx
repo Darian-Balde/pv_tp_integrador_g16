@@ -8,6 +8,8 @@ import ProductList from "./components/ProductList";
 import Favoritos from "./pages/Favoritos";  
 import CrearProducto from "./pages/CrearProducto"; 
 import EditarProducto from "./pages/EditarProducto";
+import FavoriteList from "./components/FavoriteList";
+
 
 const App = () => {
   const dispatch = useDispatch();
