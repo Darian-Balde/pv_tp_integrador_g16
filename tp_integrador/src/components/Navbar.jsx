@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import React, { useState } from "react";
-
+import womanLogo from "../assets/woman.png"; // 👉 importá la imagen
 
 const Navbar = () => {
 
@@ -15,7 +15,9 @@ const Navbar = () => {
         <div className="hamburguesa" onClick={toggleMenu}>
           ☰
         </div>
-        <Link to="/" className="logo-home">aqui iria un logo</Link>
+        <Link to="/" className="logo-home">
+          <img src={womanLogo}  alt="Logo" className="logo-img" />
+        </Link>
       </div>
 
       <div className={`navbar-links ${isOpen ? "open" : ""}`}>
