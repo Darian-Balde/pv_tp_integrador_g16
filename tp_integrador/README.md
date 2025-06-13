@@ -1,12 +1,46 @@
-# React + Vite
+# TP Integrador React - Grupo 16
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web de productos desarrollada con **React**, **Redux Toolkit** y **React Router**, que simula el comportamiento básico de un e-commerce.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Visualización de productos desde una API
+- ❤️ Marcar productos como favoritos
+- 📋 Ver lista de productos favoritos
+- ➕ Crear productos personalizados
+- ✏️ Editar productos existentes
+- ❌ Eliminar productos
+- 🔎 Ver detalle completo de cada producto
 
-## Expanding the ESLint configuration
+## 🧱 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Redux Toolkit
+- React Router DOM
+- Vite
+- CSS (estilos personalizados)
+
+## 🗂️ Estructura de carpetas
+src/
+  components/
+    ProductList.jsx
+    FavoriteList.jsx
+    ProductForm.jsx
+    Navbar.jsx
+  pages/
+    Favoritos.jsx
+    CrearProducto.jsx
+    EditarProducto.jsx
+    DetalleProducto.jsx
+  redux/
+    ProductsSlice.jsx
+    FavoritesSlice.jsx
+  App.jsx
+  main.jsx
+
+## 💻 INTEGRANTES / Usuario GitHub
+## BALDELOMAR DARIAN / Darian-Balde
+## SUILICE LUCA MAURICIO / MauricioSuilice19
+## SURUGUAY JESUS IGNACIO / IgnacioJES
+## TEJERINA GUADALUPE ORIANA / guadalupetejerina
+## VALDEZ LARA MARIEL / LaraVldz
