@@ -1,4 +1,4 @@
-**Repositorio de Programación Visual 2025 - TP Integrador**
+## Repositorio de Programación Visual 2025 - TP Integrador**
 
 ## Descripción
 
@@ -26,11 +26,11 @@ El proyecto fue realizado utilizando **React + Vite**, con manejo de rutas a tra
 
 ## 💻 INTEGRANTES -[Usuario GitHub] 
 
-- **BALDELOMAR DARIAN** - [@Darian-Balde] (https://github.com/Darian-Balde)  
-- **SUILICE LUCA MAURICIO** - [@MauricioSuilice19](https://github.com/MauricioSuilice19)  
-- **SURUGUAY JESUS IGNACIO** - [@IgnacioJES](https://github.com/ignacioJES)
-- **TEJERINA GUADALUPE ORIANA** - [@guadalupetejerina](https://github.com/guadalupetejerina)  
-- **VALDEZ LARA MARIEL** - [@LaraVldz](https://github.com/LaraVldz)
+- **BALDELOMAR DARIAN** - Darian-Balde (https://github.com/Darian-Balde)  
+- **SUILICE LUCA MAURICIO** - MauricioSuilice19 (https://github.com/MauricioSuilice19)  
+- **SURUGUAY JESUS IGNACIO** - IgnacioJES (https://github.com/ignacioJES)
+- **TEJERINA GUADALUPE ORIANA** - guadalupetejerina (https://github.com/guadalupetejerina)  
+- **VALDEZ LARA MARIEL** - LaraVldz (https://github.com/LaraVldz)
 
 ## ¿Cómo correr la aplicación?
 
