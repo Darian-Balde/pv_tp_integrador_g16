@@ -89,6 +89,19 @@
   color: #e53935;
 }
 
+.button-detalle {
+  padding: 6px 12px;
+  border: none;
+  background-color: #388e3c; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-detalle:hover {
+  background-color: #4e9652;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .favorite-card {
