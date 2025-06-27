@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../userSlice"; // ✅ importamos acción
+import { loginUser } from "../userSlice"; // importamos acción
+import "../styles/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false); // ojito
 
   const [error, setError] = useState("");
 
@@ -34,7 +36,7 @@ const Login = () => {
       // Guardar sesión en localStorage
       localStorage.setItem("sessionUser", JSON.stringify(userFound));
 
-      // ✅ Actualizar Redux
+      //  Actualizar Redux
       dispatch(loginUser(userFound));
 
       alert("¡Bienvenido!");
@@ -45,36 +47,53 @@ const Login = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "100px auto" }}>
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Correo:</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+    <div className="contenedor-formulario">
+    <h2 className="titulo-formulario">Iniciar Sesión</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label className="etiqueta">Correo:</label>
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          className="form-control campo"
+          required
+        />
+      </div>
 
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <div className="mb-3">
+  <label className="etiqueta">Contraseña:</label>
+  <div className="contenedor-ojito">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      value={form.password}
+      onChange={handleChange}
+      className="form-control campo"
+      required
+      style={{ paddingRight: "2.5rem" }}
+    />
+    <button
+      type="button"
+      className="btn-icon-ojito"
+      onClick={() => setShowPassword(!showPassword)}
+      tabIndex={-1}
+      aria-label="Mostrar/Ocultar contraseña"
+    >
+      <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`} />
+    </button>
+  </div>
+</div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <button type="submit">Ingresar</button>
-      </form>
-    </div>
+      {error && <div className="texto-error mb-3">{error}</div>}
+
+      <button type="submit" className="btn boton">
+        Ingresar
+      </button>
+    </form>
+  </div>
   );
 };
 

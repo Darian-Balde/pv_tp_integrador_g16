@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/Register.css";
 
 // Función auxiliar para validar email simple
 const validateEmail = (email) => {
@@ -14,6 +15,9 @@ const Register = () => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+
+  const [showPassword, setShowPassword] = useState(false); // mostrar/ocultar contraseña
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // para confirmar contraseña
 
   // Manejo de inputs
   const handleChange = (e) => {
@@ -64,52 +68,73 @@ const Register = () => {
     alert("¡Registro exitoso! Ahora podés iniciar sesión.");
     navigate("/login");
   };
-
+  
   return (
-    <div style={{ maxWidth: "400px", margin: "100px auto" }}>
-      <h2>Registro de Usuario</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Correo:</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-        </div>
-
-        <div>
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-        </div>
-
-        <div>
-          <label>Confirmar Contraseña:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={form.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-          {errors.confirmPassword && (
-            <p style={{ color: "red" }}>{errors.confirmPassword}</p>
-          )}
-        </div>
-
-        <button type="submit">Registrarse</button>
-      </form>
+    <div className="contenedor-formulario">
+  <h2 className="titulo-formulario">Registro de Usuario</h2>
+  <form onSubmit={handleSubmit}>
+    <div className="mb-3">
+      <label className="etiqueta">Correo:</label>
+      <input
+        type="email"
+        name="email"
+        value={form.email}
+        onChange={handleChange}
+        className="form-control campo"
+        required
+      />
+      {errors.email && <div className="texto-error">{errors.email}</div>}
     </div>
+
+<div className="mb-3">
+  <label className="etiqueta">Contraseña:</label>
+  <div className="campo-con-ojito">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      value={form.password}
+      onChange={handleChange}
+      className="campo"
+      required
+    />
+    <i
+      className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"} ojito-icono`}
+      onClick={() => setShowPassword(!showPassword)}
+      title="Mostrar/Ocultar contraseña"
+    ></i>
+  </div>
+  {errors.password && <div className="texto-error">{errors.password}</div>}
+</div>
+
+
+  <div className="mb-3">
+  <label className="etiqueta">Confirmar Contraseña:</label>
+  <div className="campo-con-ojito">
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      name="confirmPassword"
+      value={form.confirmPassword}
+      onChange={handleChange}
+      className="campo"
+      required
+    />
+    <i
+      className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"} ojito-icono`}
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+      title="Mostrar/Ocultar contraseña"
+    ></i>
+  </div>
+  {errors.confirmPassword && (
+    <div className="texto-error">{errors.confirmPassword}</div>
+  )}
+</div>
+
+    <button type="submit" className="boton">
+      Registrarse
+    </button>
+  </form>
+</div>
+
   );
 };
 
