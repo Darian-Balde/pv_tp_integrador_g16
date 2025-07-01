@@ -6,11 +6,14 @@ import { Provider } from 'react-redux';
 import Store from './store/Store.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertProvider } from "./components/AlertContext";
 
 createRoot(document.getElementById('root')).render(
   <Provider store={Store}>
     <BrowserRouter>
-      <App />
+      <AlertProvider>
+        <App />
+      </AlertProvider>
     </BrowserRouter>
   </Provider>
 );

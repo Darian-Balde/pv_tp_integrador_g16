@@ -14,6 +14,7 @@ import EditarProducto from "./pages/EditarProducto";
 import DetalleProducto from "./pages/DetalleProductos";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import GlobalAlert from "./components/GlobalAlert"; // Paso 4: importar el alert global
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <GlobalAlert /> {/* Paso 4: mostrar el alert global */}
       <Navbar />
       <main style={{ flex: 1, paddingTop: "70px" }}>
         <Routes>

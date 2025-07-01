@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/ProductForm.css";
 
 const ProductForm = ({ onSubmit, initialData }) => {
@@ -9,6 +10,7 @@ const ProductForm = ({ onSubmit, initialData }) => {
     category: "",
     image: ""
   });
+  const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
 
   useEffect(() => {
     if (initialData) {
@@ -17,91 +19,102 @@ const ProductForm = ({ onSubmit, initialData }) => {
   }, [initialData]);
 
   const handleChange = (e) => {
-  const { name, value } = e.target;
+    const { name, value } = e.target;
+    setProduct({
+      ...product,
+      [name]: name === "price" ? parseFloat(value) : value
+    });
+  };
 
-  setProduct({
-    ...product,
-    [name]: name === "price" ? parseFloat(value) : value
-  });
-};
-
-
-  const handleDelete = (id) => {
-  if (window.confirm("¿Estás seguro que querés eliminar este producto?")) {
+  // Eliminar confirmación nativa, solo delegar al padre
+  const handleDelete = () => {
     onSubmit({ ...product, _delete: true });
-  }
-};
+  };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  onSubmit(product);
-  alert(initialData ? "Producto editado correctamente" : "Producto creado exitosamente");
-};
-
+    e.preventDefault();
+    onSubmit(product);
+    setAlert({
+      show: true,
+      message: initialData ? "Producto editado correctamente" : "Producto creado exitosamente",
+      variant: "success"
+    });
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="product-form">
-  <h2>{initialData ? "Editar Producto" : "Crear Producto"}</h2>
+    <form onSubmit={handleSubmit} className="product-form p-4 border rounded bg-light">
+      <h2 className="mb-4">{initialData ? "Editar Producto" : "Crear Producto"}</h2>
 
-  <input
-    name="title"
-    placeholder="Título"
-    value={product.title}
-    onChange={handleChange}
-    required
-    minLength={3}
-  />
+      {alert.show && (
+        <div className={`alert alert-${alert.variant} alert-dismissible fade show`} role="alert">
+          {alert.message}
+          <button type="button" className="btn-close" aria-label="Close" onClick={() => setAlert({ ...alert, show: false })}></button>
+        </div>
+      )}
 
-  <input
-    name="price"
-    type="number"
-    step="0.01"
-    min="0"
-    placeholder="Precio"
-    value={product.price}
-    onChange={handleChange}
-    required
-  />
+      <input
+        name="title"
+        className="form-control mb-3"
+        placeholder="Título"
+        value={product.title}
+        onChange={handleChange}
+        required
+        minLength={3}
+      />
 
-  <input
-    name="category"
-    placeholder="Categoría"
-    value={product.category}
-    onChange={handleChange}
-    required
-  />
+      <input
+        name="price"
+        type="number"
+        step="0.01"
+        min="0"
+        className="form-control mb-3"
+        placeholder="Precio"
+        value={product.price}
+        onChange={handleChange}
+        required
+      />
 
-  <input
-    name="image"
-    placeholder="URL de imagen"
-    value={product.image}
-    onChange={handleChange}
-  />
+      <input
+        name="category"
+        className="form-control mb-3"
+        placeholder="Categoría"
+        value={product.category}
+        onChange={handleChange}
+        required
+      />
 
-  <textarea
-    name="description"
-    placeholder="Descripción"
-    value={product.description}
-    onChange={handleChange}
-    required
-    minLength={10}
-  />
+      <input
+        name="image"
+        className="form-control mb-3"
+        placeholder="URL de imagen"
+        value={product.image}
+        onChange={handleChange}
+      />
 
-  <button type="submit">
-    {initialData ? "Guardar cambios" : "Crear producto"}
-  </button>
+      <textarea
+        name="description"
+        className="form-control mb-3"
+        placeholder="Descripción"
+        value={product.description}
+        onChange={handleChange}
+        required
+        minLength={10}
+      />
 
-  {initialData && (
-    <button
-      type="button"
-      onClick={() => handleDelete(product.id)}
-      className="delete-button"
-    >
-      Eliminar producto
-    </button>
-  )}
-</form>
+      <button type="submit" className="btn btn-primary me-2">
+        {initialData ? "Guardar cambios" : "Crear producto"}
+      </button>
 
+      {initialData && (
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="btn btn-danger"
+        >
+          Eliminar producto
+        </button>
+      )}
+    </form>
   );
 };
 
