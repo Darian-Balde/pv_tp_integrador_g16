@@ -43,9 +43,9 @@ const Footer = () => {
             <div className="footer-bottom">
                 <p>© Programación Visual 2025 - TP Integrador</p>
                 <div className="footer-links">
-                    <a href="#">Términos</a> |
-                    <a href="#"> Política</a> |
-                    <a href="#"> Reembolsos</a> |
+                    <a href="#">Términos</a> 
+                    <a href="#"> Política</a> 
+                    <a href="#"> Reembolsos</a> 
                     <a href="#"> Accesibilidad</a>
                 </div>
             </div>
