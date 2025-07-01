@@ -129,18 +129,50 @@ const ProductList = () => {
       <div className="product-grid">
         {products.map((p) => (
           <div className="product-card" key={p.id}>
-            <div className="favorite-icon" onClick={() => handleToggle(p)}>
-              {isFavorite(p.id) ? "❤️" : "🤍"}
-            </div>
+            {/* Corazón Bootstrap */}
+            <button
+              className={`favorite-icon btn-fav ${isFavorite(p.id) ? "active" : ""}`}
+              onClick={() => handleToggle(p)}
+              title={isFavorite(p.id) ? "Quitar de favoritos" : "Agregar a favoritos"}
+            >
+              <i className={`bi ${isFavorite(p.id) ? "bi-heart-fill" : "bi-heart"}`}></i>
+            </button>
             <img src={p.image} alt={p.title} className="product-image" />
             <h2 className="product-name">{p.title}</h2>
+            {/* Rating en estrellas */}
+            <div className="mb-1">
+              {(() => {
+                const rate = p.rating?.rate ?? 0;
+                const fullStars = Math.floor(rate);
+                const halfStar = rate - fullStars >= 0.5;
+                const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+                return (
+                  <>
+                    {[...Array(fullStars)].map((_, i) => (
+                      <i key={`full-${i}`} className="bi bi-star-fill text-warning"></i>
+                    ))}
+                    {halfStar && <i className="bi bi-star-half text-warning"></i>}
+                    {[...Array(emptyStars)].map((_, i) => (
+                      <i key={`empty-${i}`} className="bi bi-star text-warning"></i>
+                    ))}
+                    <span className="ms-1 text-secondary" style={{ fontSize: "0.95rem" }}>
+                      {rate.toFixed(1)} ({p.rating?.count ?? 0})
+                    </span>
+                  </>
+                );
+              })()}
+            </div>
             <p className="product-price">${p.price.toFixed(2)}</p>
             <div className="botones-lista">
-              <Link to={`/detalle/${p.id}`}>
-                <button className="button-detalle">Ver más</button>
+              <Link to={`/detalle/${p.id}`} className="no-underline">
+                <button className="btn-detalle" title="Ver detalles">
+                  <i className="bi bi-info-circle"></i> Ver más
+                </button>
               </Link>
-              <Link to={`/editar/${p.id}`}>
-                <button className="edit-button">Editar</button>
+              <Link to={`/editar/${p.id}`} className="no-underline">
+                <button className="btn-editar" title="Editar producto">
+                  <i className="bi bi-pencil-square"></i> Editar
+                </button>
               </Link>
             </div>
           </div>
