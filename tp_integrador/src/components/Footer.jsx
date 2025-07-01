@@ -1,4 +1,4 @@
-import './Footer.css';
+import '../styles/Footer.css';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 /* Los # Es para agregar informacion, no supe que ocupar ahi*/
 /*Agregue el Repositorio como un acceso rapido */

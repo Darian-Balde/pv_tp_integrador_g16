@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProductForm from "../components/ProductForm";
-import {  update , remove } from "../ProductsSlice"; // podés usar otro reducer tipo `update`
+import {  update , remove } from "../store/ProductsSlice"; // podés usar otro reducer tipo `update`
 
 const EditarProducto = () => {
   const { id } = useParams();

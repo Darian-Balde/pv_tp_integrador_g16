@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFavorite } from "../FavoritesSlice"; 
+import { toggleFavorite } from "../store/FavoritesSlice"; 
 import { Link } from "react-router-dom";
 import "../styles/ProductList.css";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { add } from "../ProductsSlice";
+import { add } from "../store/ProductsSlice";
 import ProductForm from "../components/ProductForm";
 import { useNavigate } from "react-router-dom";
 

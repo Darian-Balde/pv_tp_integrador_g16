@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../userSlice"; // importamos acción
+import { loginUser } from "../store/userSlice"; // importamos acción
 import "../styles/Login.css";
 
 const Login = () => {

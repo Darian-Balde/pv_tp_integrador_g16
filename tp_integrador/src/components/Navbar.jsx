@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "../styles/Navbar.css";
 import React, { useState } from "react";
 import womanLogo from "../assets/woman.png"; // 👉 importá la imagen
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../userSlice";
+import { logoutUser } from "../store/userSlice";
 
 
 const Navbar = () => {
