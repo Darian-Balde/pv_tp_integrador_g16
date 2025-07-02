@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
+import { addToCart } from "../store/CartSlice";
 import { Link } from "react-router-dom";
 import "../styles/ProductList.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,6 +20,9 @@ const ProductList = () => {
   const [criterio, setCriterio] = useState("precio");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Estado para mostrar la animación cuando se agrega un producto al carrito
+  const [animatingId, setAnimatingId] = useState(null);
+  const timeoutRef = useRef();
 
   const categoriasDisponibles = [...new Set(products.map((p) => p.category))];
 
@@ -68,6 +72,15 @@ const ProductList = () => {
       imgs.push(products[idx]);
     }
     return imgs;
+  };
+
+  // Esta función se llama cuando el usuario hace clic en 'Agregar al carrito'.
+  // Además de agregar el producto, activa una animación visual en el botón.
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    setAnimatingId(product.id); // Marca el producto para animar el botón
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setAnimatingId(null), 600); // Quita la animación después de un momento
   };
 
   if (loading)
@@ -172,6 +185,14 @@ const ProductList = () => {
                     <i className="bi bi-pencil-square"></i> Editar
                   </button>
                 </Link>
+                {/* Botón para agregar el producto al carrito. Cuando se hace clic, muestra una animación breve. */}
+                <button
+                  className={`btn-carrito${animatingId === p.id ? " animating" : ""}`}
+                  title="Agregar al carrito"
+                  onClick={() => handleAddToCart(p)}
+                >
+                  <i className="bi bi-cart-plus"></i> Agregar al carrito
+                </button>
               </div>
             </div>
           ))}

@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
+import { addToCart } from "../store/CartSlice";
 import "../styles/DetalleProductos.css";
 
 const DetalleProducto = () => {
@@ -68,7 +69,10 @@ const DetalleProducto = () => {
               })()}
             </span>
           </p>
-          <div className="volver-container">
+          <div className="detalle-botones">
+            <button className="btn btn-agregar-carrito" onClick={() => dispatch(addToCart(product))}>
+              <i className="bi bi-bag-plus"></i> Agregar al carrito
+            </button>
             <Link to="/" className="btn btn-volver">
               <i className="bi bi-arrow-left-circle"></i> Volver al inicio
             </Link>

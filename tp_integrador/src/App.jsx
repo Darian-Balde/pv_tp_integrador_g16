@@ -15,6 +15,7 @@ import DetalleProducto from "./pages/DetalleProductos";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import GlobalAlert from "./components/GlobalAlert"; // Paso 4: importar el alert global
+import Carrito from "./pages/Carrito";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -71,6 +72,14 @@ const App = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route
+            path="/carrito"
+            element={
+              <PrivateRoute>
+                <Carrito />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />

@@ -207,3 +207,26 @@
     display: none !important;
   }
 }
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 20px;
+  text-align: center;
+  box-shadow: 0 0 0 2px white;
+  z-index: 10;
+}
+
+.badge {
+  line-height: 1;
+  font-weight: bold;
+  padding: 0.35em 0.5em;
+}
