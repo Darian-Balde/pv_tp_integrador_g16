@@ -10,6 +10,8 @@ const validateEmail = (email) => {
 const Register = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
+    nombre: "",
+    apellido: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,6 +32,13 @@ const Register = () => {
   // Validación simple
   const validateForm = () => {
     const newErrors = {};
+    if (!form.nombre.trim()) {
+      newErrors.nombre = "El nombre es obligatorio";
+    }
+    if (!form.apellido.trim()) {
+      newErrors.apellido = "El apellido es obligatorio";
+    }
+
     if (!validateEmail(form.email)) {
       newErrors.email = "Correo inválido";
     }
@@ -62,17 +71,46 @@ const Register = () => {
     }
 
     // Guardar nuevo usuario
-    const newUser = { email: form.email, password: form.password };
+    const newUser = {  
+      nombre: form.nombre, 
+      apellido: form.apellido, 
+      email: form.email, 
+      password: form.password };
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
 
     alert("¡Registro exitoso! Ahora podés iniciar sesión.");
     navigate("/login");
   };
   
-  return (
+  return (   
     <div className="contenedor-formulario">
   <h2 className="titulo-formulario">Registro de Usuario</h2>
   <form onSubmit={handleSubmit}>
+    
+    <div className="mb-3">
+  <label className="etiqueta">Nombre:</label>
+  <input
+    type="text"
+    name="nombre"
+    value={form.nombre}
+    onChange={handleChange}
+    className="form-control campo"
+    required
+  />
+</div>
+
+<div className="mb-3">
+  <label className="etiqueta">Apellido:</label>
+  <input
+    type="text"
+    name="apellido"
+    value={form.apellido}
+    onChange={handleChange}
+    className="form-control campo"
+    required
+  />
+</div>
+
     <div className="mb-3">
       <label className="etiqueta">Correo:</label>
       <input

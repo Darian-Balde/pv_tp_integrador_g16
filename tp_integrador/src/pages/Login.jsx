@@ -92,6 +92,11 @@ const Login = () => {
       <button type="submit" className="btn boton">
         Ingresar
       </button>
+      <p style={{ marginTop: '1rem', textAlign: 'center' }}>
+  ¿No tienes cuenta?{" "}
+  <a href="/register" className="link-registrarse">Registrate</a>
+</p>
+
     </form>
   </div>
   );
