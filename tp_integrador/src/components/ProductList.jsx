@@ -89,7 +89,7 @@ const ProductList = () => {
         {/* Banners */}
         <div className="fullwidth-banner mb-1">
           <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold">
-            ¡20% de descuento en ropa de abrigos!
+            ¡20% de descuento por tiempo limitado!
           </div>
         </div>
 

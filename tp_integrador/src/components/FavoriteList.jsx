@@ -12,7 +12,11 @@ const FavoritesList = () => {
     dispatch(toggleFavorite(product));
   };
 
-  if (!favorites.length) return <p>No hay productos favoritos.</p>;
+  if (!favorites.length) return (
+    <div className="favorites-empty-message">
+      No hay productos favoritos.
+    </div>
+  );
 
   return (
     <div className="favorites-container">

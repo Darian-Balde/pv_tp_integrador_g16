@@ -34,6 +34,23 @@
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+.favorites-empty-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  color: #608334;
+  font-weight: 600;
+  text-align: center;
+  background: #F7FEEF;
+  border-radius: 16px;
+  margin: 3rem auto;
+  max-width: 500px;
+  box-shadow: 0 4px 16px rgba(96, 131, 52, 0.08);
+}
+
 .favorites-list {
   display: flex;
   flex-direction: column;
