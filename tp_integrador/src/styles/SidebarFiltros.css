@@ -1,0 +1,44 @@
+.sidebar-filters {
+  width: 100%;
+  max-width: 260px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: fit-content;
+  box-shadow: 0 2px 12px rgba(46, 93, 59, 0.07);
+  overflow-y: auto;
+}
+
+.filter-section h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  color: #198754;
+  font-weight: 600;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-list li {
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  margin-bottom: 0.3rem;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.95rem;
+}
+.filter-list li:hover {
+  background: #e9f7ef;
+  color: #145a32;
+}
+.filter-list li.activa {
+  font-weight: bold;
+  color: #198754;
+  background: #def8e9;
+}

@@ -1,64 +1,142 @@
-## Repositorio de Programación Visual 2025 - TP Integrador**
+# Trabajo Práctico Integrador – Programación Visual
 
-## Descripción
+*Carrera:* Analista Programador Universitario.
+*Facultad de Ingeniería – Año:* 2025.
+*Materia:* Programación Visual.
+*Modalidad:* Trabajo grupal - Integrador Final.
 
-Aplicación web desarrollada como **Trabajo Práctico Integrador** de la materia **Programación Visual**. Se trata de una **SPA (Single Page Application)** que permite:
+## Índice
 
-- 📦 Listar productos con imagen, nombre, precio y categoría.  
-- ⭐ Marcar productos como favoritos.  
-- 🔍 Ver detalles ampliados de cada producto.  
-- 📝 Editar y eliminar productos.  
-- 🌐 Consumir productos desde una API externa.
+* 📌 Objetivo del proyecto
+* ⚙ Tecnologías utilizadas
+* 🗂 Estructura del proyecto
+* ✅ Funcionalidades
+* 🧩 Detalle técnico por módulo
+* 🧪 Manual de pruebas
+* 🧑‍💻 Convenciones de código
+* 🖥 Instalación y ejecución local
+* 👥 Integrantes del grupo
+* 📝 Notas finales
 
-El proyecto fue realizado utilizando **React + Vite**, con manejo de rutas a través de **React Router DOM** y gestión de estado global con **Redux Toolkit**.
+## Objetivo del proyecto
 
- 
-## 🛠️ Tecnologías utilizadas
+El propósito de este trabajo integrador fue desarrollar una aplicación web moderna, dinámica y funcional, aplicando los conocimientos adquiridos a lo largo de la asignatura Programación Visual.
 
-- ⚛️ **React**
-- ⚡ **Vite**
-- 🎯 **Redux Toolkit**
-- 🔄 **React Redux**
-- 🧭 **React Router DOM**
-- 💅 **CSS / Tailwind / Chakra UI**
-- 🔗 **[Fake Store API]**
+Nos planteamos construir una SPA (Single Page Application) utilizando React, que permita al usuario interactuar con productos obtenidos desde una API externa, integrando funcionalidades como marcado de favoritos, vistas detalladas y manejo eficiente del estado global.
 
 
-## 💻 INTEGRANTES -[Usuario GitHub] 
+Durante el desarrollo:
 
-- **BALDELOMAR DARIAN** - Darian-Balde (https://github.com/Darian-Balde)  
-- **SUILICE LUCA MAURICIO** - MauricioSuilice19 (https://github.com/MauricioSuilice19)  
-- **SURUGUAY JESUS IGNACIO** - IgnacioJES (https://github.com/ignacioJES)
-- **TEJERINA GUADALUPE ORIANA** - guadalupetejerina (https://github.com/guadalupetejerina)  
-- **VALDEZ LARA MARIEL** - LaraVldz (https://github.com/LaraVldz)
+* Aplicamos conceptos clave de React como componentes, hooks y manejo de estado global.
+* Implementamos rutas dinámicas con React Router DOM.
+* Utilizamos herramientas modernas como Vite para desarrollo y Bootstrap para estilos.
+* Respetamos buenas prácticas de código y modularización por features.
+* El trabajo colaborativo en un entorno controlado con Git y GitHub.
 
-## ¿Cómo correr la aplicación?
+## ⚙ Tecnologías utilizadas
 
-- Seguí estos pasos y vas a poder ver la página funcionando en tu navegador. 
+* React (componentes funcionales y hooks como useEffect, useState, useParams)
+* React Router DOM (navegación y rutas dinámicas)
+* Fetch API (consumo de API externa)
+* Vite (entorno de desarrollo y build optimizado)
+* Bootstrap (estilos, grid, botones, responsividad)
 
-1. **Cloná este repositorio:**
+## Estructura del proyecto
 
-*bash:*
+tp_integrador/
+├── public/
+│   ├── fondo.jpg
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── woman.png
+│   ├── components/
+│   │   ├── FavoritosList.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Navbar.css
+│   │   ├── Navbar.jsx
+│   │   ├── ProductForm.css
+│   │   ├── ProductForm.jsx
+│   │   └── ProductList.jsx
+│   ├── pages/
+│   │   ├── CrearProductos.jsx
+│   │   ├── DetalleProductos.jsx
+│   │   ├── EditarProductos.jsx
+│   │   └── Favoritos.jsx
+│   ├── style/
+│   │   ├── DetalleProductos.css
+│   │   ├── Favoritos.css
+│   │   └── ProductList.css
+│   ├── App.css
+│   ├── App.jsx
+│   ├── FavoritosSlice.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── ProductsSlice.jsx
+│   └── Store.jsx
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── vite.config.js
+└── README.md
 
-git clone https://github.com/Darian-Balde/pv_tp_integrador_g16.git
+## Funcionalidades
 
-2. **Ingresá a la carpeta del proyecto:**
+* Página de inicio con cards de productos obtenidos desde una API externa.
+* Visualización de imagen, nombre, precio, descripción y categoría.
+* Marcado de productos como favoritos mediante icono o checkbox.
+* Navegación hacia una vista de detalle del producto.
+* Página de favoritos con filtrado automático según estado global.
+* Componente de formulario reutilizable para crear o editar productos (simulado en frontend).
 
-*bash:*
 
-cd tp_integrador
+## Detalle técnico por módulo
 
-3. **Instalá las dependencias (solo la primera vez):**
+| Módulo    | Descripción                                                                                                                              |
+| :-------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| Inicio    | Carga productos desde la API externa y renderiza en cards. Se permite marcar como favorito o ver detalle.                                 |
+| Favoritos | Filtra los productos marcados como favoritos y los muestra en una vista independiente.                                                   |
+| Detalle   | Permite visualizar en detalle un producto individual, navegando por ID desde la URL.                                                     |
+| Formulario | Utiliza un único componente para creación o edición, con campos dinámicos y validaciones mínimas.                                        |
 
-*bash:*
+## Manual de pruebas
 
-npm install
+| Componente | Prueba esperada             | Método                        |
+| :--------- | :-------------------------- | :---------------------------- |
+| Inicio     | Productos cargados desde la API | Ver cards al iniciar app      |
+| Favoritos  | Persistencia al marcar y desmarcar | Verificación visual           |
+| Detalle    | Renderizado correcto por ID | Ingreso desde botón Ver más   |
+| Formulario | Renderizado dinámico de campos | Crear/editar producto simulado |
+| Redux      | Actualización de estado en tiempo real | Usar Redux DevTools           |
 
-4. **Ejecutá la aplicación:**
 
-*bash:*
+## Instalación y ejecución local
 
-npm run dev
+1.  Clonar el repositorio
+    bash
+    git clone [https://github.com/Darian-Balde/pv_tp_integrador_g16.git](https://github.com/Darian-Balde/pv_tp_integrador_g16.git)
+    cd pv_tp_integrador_g16
+    
+2.  Instalar dependencias
+    bash
+    npm install
+    
+3.  Ejecutar en desarrollo
+    bash
+    npm run dev
+    
+4.  Acceder a la app desde el navegador
+    
+    http://localhost:5173
+    
 
-5. **Abrí el navegador y pegá el link que aparece en la terminal**
-(normalmente es http://localhost:5173)
+## Integrantes del grupo
+
+| Nombre completo           | Nombre de usuario y enlace                                  |
+| :--------------           | :----------------                                           |
+| BALDELOMAR DARIAN         |  Darian-Balde (https://github.com/Darian-Balde)             |        
+| SUILICE LUCA MAURICIO     |  MauricioSuilice19 (https://github.com/MauricioSuilice19)   |                          
+| SURUGUAY JESUS IGNACIO    |  IgnacioJES (https://github.com/ignacioJES)                 |
+| TEJERINA GUADALUPE ORIANA |  guadalupetejerina (https://github.com/guadalupetejerina)   |
+| VALDEZ LARA MARIEL        |   LaraVldz (https://github.com/LaraVldz)                    |

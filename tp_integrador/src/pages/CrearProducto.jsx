@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { add } from "../ProductsSlice";
+import { add } from "../store/ProductsSlice";
 import ProductForm from "../components/ProductForm";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../components/AlertContext";
 
 const CrearProducto = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
 
   const handleCreate = (nuevoProducto) => {
     // Validación adicional (el formulario ya impide campos vacíos y negativos con HTML5)
@@ -17,7 +19,7 @@ const CrearProducto = () => {
       !nuevoProducto.image.trim() ||
       nuevoProducto.price < 0
     ) {
-      alert("Por favor, completá todos los campos correctamente.");
+      showAlert("Por favor, completá todos los campos correctamente.", "danger");
       return;
     }
 
@@ -25,8 +27,8 @@ const CrearProducto = () => {
     nuevoProducto.id = Date.now();
 
     dispatch(add(nuevoProducto));
-    alert("Producto creado exitosamente");
-    navigate("/"); // o a donde desees redirigir
+    showAlert("Producto creado exitosamente", "success");
+    setTimeout(() => navigate("/"), 2000);
   };
 
   return (

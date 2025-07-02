@@ -1,0 +1,106 @@
+.contenedor-formulario {
+  padding: 3rem 2rem;
+  max-width: 520px;
+  margin: 100px auto;
+  background-color: #F7FEEF;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(96, 131, 52, 0.08); /* #608334 */
+}
+
+.titulo-formulario {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #608334;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.etiqueta {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #608334;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.campo {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #CBDDB5;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #F7FEEF;
+  color: #212121;
+}
+
+.campo:focus {
+  border-color: #A8CA7E;
+  box-shadow: 0 0 0 0.25rem rgba(168, 202, 126, 0.15); /* #A8CA7E */
+  outline: none;
+  background-color: #ffffff;
+}
+
+.boton {
+  background-color: #608334;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton:hover {
+  background-color: #97B770;
+  transform: translateY(-1px);
+}
+
+.texto-error {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  color: #d32f2f;
+}
+
+.contenedor-ojito {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn-icon-ojito {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #A8CA7E;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon-ojito:hover {
+  color: #608334;
+}
+
+.link-registrarse {
+  color: #608334;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.link-registrarse:hover {
+  color: #A8CA7E;
+}

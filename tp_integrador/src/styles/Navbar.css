@@ -1,0 +1,209 @@
+.navbar {
+  width: 100%;
+  height: 70px;
+  background: #83a559; /* Cambia el degradado por un sólido verde oscuro */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11000;
+  box-shadow: 0 4px 16px rgba(20, 83, 45, 0.18); /* Ajusta sombra al verde oscuro */
+}
+
+/* --- Tabs estilo F1, centrado --- */
+.navbar-nav {
+  height: 70px;
+  align-items: stretch;
+}
+
+.nav-link-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1.7rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  border-radius: 0;
+  background: transparent;
+  transition: 
+    background 0.18s cubic-bezier(0.4, 0.2, 0.2, 1),
+    color 0.18s,
+    box-shadow 0.18s,
+    margin 0.18s cubic-bezier(0.4, 0.2, 0.2, 1);
+  margin: 0 0.1rem;
+  position: relative;
+  letter-spacing: 0.5px;
+  text-align: center;
+  line-height: 70px;
+  min-width: 120px;
+  min-height: 70px;
+  box-sizing: border-box;
+}
+
+.nav-link-tab:hover, .nav-link-tab:focus {
+  background: #A8CA7E;
+  color: #608334 !important;
+  box-shadow: 0 2px 12px 0 rgba(46,93,59,0.18);
+  z-index: 2;
+}
+
+.nav-link-tab.active, .nav-link-tab[aria-current="page"] {
+  background: #7da95a;
+  color: #fff !important;
+  font-weight: 900;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .navbar-nav {
+    height: auto;
+    align-items: flex-start;
+  }
+  .nav-link-tab {
+    height: auto;
+    min-height: 48px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    margin: 0.2rem 0;
+    font-size: 1rem;
+    color: #fff;
+    background: transparent;
+    line-height: normal;
+    min-width: unset;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar{
+    justify-content: flex-start;
+    padding-left: 2rem;
+  }
+  .navbar-nav {
+    width: 100%;
+  }
+  .nav-link-tab {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+/* Badge usuario */
+.badge.bg-light.text-success {
+  color: #2e5d3b !important;
+  background: linear-gradient(90deg, #e3f0ff 0%, #e0f7ef 100%) !important;
+  border: 1px solid #b6e2c8;
+}
+
+/* Botones sesión */
+.btn-success {
+  background-color: #87a563 !important; /* Igual que el navbar */
+  border-color: #87a563 !important;
+  color: #fff !important;
+  font-weight: 600;
+  transition: background 0.18s, color 0.18s;
+}
+.btn-success:hover, .btn-success:focus {
+  background-color: #6bbf7b !important;
+  border-color: #6bbf7b !important;
+  color: #fff !important;
+}
+
+.btn-outline-success {
+  color: #fff !important;
+  border-color: #6bbf7b !important;
+  background: transparent !important;
+  font-weight: 600;
+}
+.btn-outline-success:hover, .btn-outline-success:focus {
+  background-color: #6bbf7b !important;
+  color: #fff !important;
+  border-color: #6bbf7b !important;
+}
+
+/* Mostrar solo en pantallas grandes */
+.desktop-menu {
+  display: flex;
+}
+@media (max-width: 991px) {
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* Menú móvil pantalla completa */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:  rgba(31, 46, 60, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.mobile-menu ul li {
+  margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.mobile-menu ul li a:hover {
+  color: #6bbf7b;
+}
+
+.mobile-menu ul li a.active {
+  color: #1b4332;
+  font-weight: 900;
+}
+
+/* Color verde clarito para la opción activa en menú móvil */
+.mobile-menu ul li a.active-mobile {
+  color: #9ee9be !important;
+  font-weight: 900;
+}
+
+.navbar .navbar-brand .tp-title-navbar {
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
