@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/SidebarFiltros.css";
 
-// Sidebar de filtros y ordenamiento para productos
 const SidebarFilters = ({ categorias, seleccionarCategoria, categoriaActiva, criterio, setCriterio }) => {
   return (
     <aside className="sidebar-filters">
@@ -25,25 +24,17 @@ const SidebarFilters = ({ categorias, seleccionarCategoria, categoriaActiva, cri
           ))}
         </ul>
       </div>
+
       <div className="filter-section">
         <h5>Ordenar por</h5>
         <ul className="filter-list">
-          <li
-            className={criterio === "precio" ? "activa" : ""}
-            onClick={() => setCriterio("precio")}
-          >
+          <li className={criterio === "precio" ? "activa" : ""} onClick={() => setCriterio("precio")}>
             Precio
           </li>
-          <li
-            className={criterio === "rating" ? "activa" : ""}
-            onClick={() => setCriterio("rating")}
-          >
+          <li className={criterio === "rating" ? "activa" : ""} onClick={() => setCriterio("rating")}>
             Rating
           </li>
-          <li
-            className={criterio === "nombre" ? "activa" : ""}
-            onClick={() => setCriterio("nombre")}
-          >
+          <li className={criterio === "nombre" ? "activa" : ""} onClick={() => setCriterio("nombre")}>
             Nombre
           </li>
         </ul>

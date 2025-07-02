@@ -10,23 +10,18 @@ const IMAGES_PER_VIEW_DESKTOP = 6;
 const IMAGES_PER_VIEW_MOBILE = 2;
 
 const ProductList = () => {
-  const { entities: products, loading, error } = useSelector(
-    (state) => state.products
-  );
+  const { entities: products, loading, error } = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.items);
   const dispatch = useDispatch();
 
   const [imagesPerView, setImagesPerView] = useState(IMAGES_PER_VIEW_DESKTOP);
   const [carouselIdx, setCarouselIdx] = useState(0);
-
-  // NUEVO: Estado para ordenamiento y categoría seleccionada
   const [criterio, setCriterio] = useState("precio");
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // NUEVO: Obtener lista única de categorías
   const categoriasDisponibles = [...new Set(products.map((p) => p.category))];
 
-  // Ordena los productos por precio, rating o nombre
   const ordenarProductos = (productos) => {
     const copia = [...productos];
     switch (criterio) {
@@ -41,7 +36,6 @@ const ProductList = () => {
     }
   };
 
-  // NUEVO: Filtrar productos por categoría seleccionada
   const filtrarProductos = () => {
     if (categoriaSeleccionada === "Todas") return products;
     return products.filter((p) => p.category === categoriaSeleccionada);
@@ -49,9 +43,7 @@ const ProductList = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setImagesPerView(
-        window.innerWidth < 768 ? IMAGES_PER_VIEW_MOBILE : IMAGES_PER_VIEW_DESKTOP
-      );
+      setImagesPerView(window.innerWidth < 768 ? IMAGES_PER_VIEW_MOBILE : IMAGES_PER_VIEW_DESKTOP);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -78,81 +70,62 @@ const ProductList = () => {
     return imgs;
   };
 
-  if (loading) return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', width: '100%'}}>
-      <div style={{textAlign: 'center'}}>
-        <div className="spinner-border text-success mb-2" role="status" style={{width: '3rem', height: '3rem'}}>
+  if (loading)
+    return (
+      <div className="loading-spinner">
+        <div className="spinner-border text-success mb-2" role="status" style={{ width: "3rem", height: "3rem" }}>
           <span className="visually-hidden">Cargando...</span>
         </div>
-        <div style={{fontSize: '1.2rem', color: '#198754'}}>Cargando productos…</div>
+        <div style={{ fontSize: "1.2rem", color: "#198754" }}>Cargando productos…</div>
       </div>
-    </div>
-  );
+    );
+
   if (error) return <p>Error: {error}</p>;
   if (!products.length) return <p>No hay productos disponibles.</p>;
 
   return (
     <div className="product-container" style={{ display: "flex", gap: "1.5rem" }}>
-      {/* Sidebar ahora recibe criterio y setCriterio */}
-      <SidebarFilters
-        categorias={categoriasDisponibles}
-        seleccionarCategoria={setCategoriaSeleccionada}
-        categoriaActiva={categoriaSeleccionada}
-        criterio={criterio}
-        setCriterio={setCriterio}
-      />
       <div style={{ flex: 1 }}>
+        {/* Banners */}
         <div className="fullwidth-banner mb-1">
-          <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold" style={{ letterSpacing: 1 }}>
+          <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold">
             ¡20% de descuento en ropa de abrigos!
           </div>
         </div>
-        <div
-          className="fullwidth-carousel d-flex justify-content-center align-items-center"
-          style={{
-            overflow: "hidden",
-            minHeight: 200,
-            background: "linear-gradient(90deg, #e4f0e8 0%, #c8e6c9 100%)",
-          }}
-        >
-          <div className="d-flex w-100 justify-content-center align-items-center" style={{ gap: 0 }}>
+
+        {/* Carrusel */}
+        <div className="fullwidth-carousel d-flex justify-content-center align-items-center">
+          <div className="d-flex w-100 justify-content-center align-items-center">
             {getCarouselImages().map((p) => (
               <div
                 key={p.id}
+                className="carousel-image-wrapper"
                 style={{
                   flex: `0 0 ${100 / imagesPerView}%`,
                   maxWidth: `${100 / imagesPerView}%`,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  transition: "opacity 0.7s",
                 }}
               >
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  style={{
-                    maxHeight: 120,
-                    objectFit: "contain",
-                    maxWidth: "90%",
-                    background: "#fff",
-                    borderRadius: 12,
-                    boxShadow: "0 2px 12px rgba(46,93,59,0.08)",
-                    padding: 8,
-                  }}
-                />
+                <img src={p.image} alt={p.title} className="carousel-image" />
               </div>
             ))}
           </div>
         </div>
+
         <div className="fullwidth-banner mb-3 mt-1">
-          <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold" style={{ letterSpacing: 1 }}>
+          <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold">
             ¡Aprovechá la promo antes que se termine!
           </div>
         </div>
+
+        {/* Filtros móviles */}
+        <div className="btn-filtro-abajo">
+          <button className="btn btn-success" onClick={() => setSidebarOpen(true)}>
+            <i className="bi bi-filter"></i> Filtros
+          </button>
+        </div>
+
         <h1 className="product-title-main">Lista de Productos 🛍️</h1>
 
-        {/* NUEVO: Filtramos y luego ordenamos */}
         <div className="product-grid">
           {ordenarProductos(filtrarProductos()).map((p) => (
             <div className="product-card" key={p.id}>
@@ -205,6 +178,20 @@ const ProductList = () => {
         </div>
 
         <p className="fin-lista">Ha alcanzado el final de la lista. ✨</p>
+
+        {sidebarOpen && (
+          <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}>
+            <div className="sidebar-panel" onClick={(e) => e.stopPropagation()}>
+              <SidebarFilters
+                categorias={categoriasDisponibles}
+                seleccionarCategoria={setCategoriaSeleccionada}
+                categoriaActiva={categoriaSeleccionada}
+                criterio={criterio}
+                setCriterio={setCriterio}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
