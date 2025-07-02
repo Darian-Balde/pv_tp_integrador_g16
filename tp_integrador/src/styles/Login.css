@@ -2,9 +2,9 @@
   padding: 3rem 2rem;
   max-width: 520px;
   margin: 100px auto;
-  background-color: #ffffff;
+  background-color: #F7FEEF;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(96, 131, 52, 0.08); /* #608334 */
 }
 
 .titulo-formulario {
@@ -12,7 +12,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2.5rem;
-  color: #0d47a1;
+  color: #608334;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -20,7 +20,7 @@
 .etiqueta {
   font-weight: 600;
   font-size: 1rem;
-  color: #0d47a1;
+  color: #608334;
   margin-bottom: 6px;
   display: block;
 }
@@ -28,24 +28,24 @@
 .campo {
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid #cfd8dc;
+  border: 2px solid #CBDDB5;
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fefefe;
+  background-color: #F7FEEF;
   color: #212121;
 }
 
 .campo:focus {
-  border-color: #0d47a1;
-  box-shadow: 0 0 0 0.25rem rgba(13, 71, 161, 0.15);
+  border-color: #A8CA7E;
+  box-shadow: 0 0 0 0.25rem rgba(168, 202, 126, 0.15); /* #A8CA7E */
   outline: none;
   background-color: #ffffff;
 }
 
 .boton {
-  background-color: #0d47a1;
+  background-color: #608334;
   color: white;
   border: none;
   border-radius: 10px;
@@ -58,7 +58,7 @@
 }
 
 .boton:hover {
-  background-color: #1450b3;
+  background-color: #97B770;
   transform: translateY(-1px);
 }
 
@@ -67,6 +67,7 @@
   margin-top: 6px;
   color: #d32f2f;
 }
+
 .contenedor-ojito {
   position: relative;
   display: flex;
@@ -80,7 +81,7 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: #6c757d;
+  color: #A8CA7E;
   cursor: pointer;
   font-size: 1.2rem;
   padding: 0;
@@ -90,5 +91,16 @@
 }
 
 .btn-icon-ojito:hover {
-  color: #0d47a1;
+  color: #608334;
+}
+
+.link-registrarse {
+  color: #608334;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.link-registrarse:hover {
+  color: #A8CA7E;
 }

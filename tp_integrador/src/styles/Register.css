@@ -2,9 +2,9 @@
   padding: 3rem 2rem;
   max-width: 650px;
   margin: 100px auto;
-  background-color: #ffffff;
+  background-color: #F7FEEF; /* Fondo claro */
   border-radius: 20px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(96, 131, 52, 0.08); /* #608334 */
 }
 
 .titulo-formulario {
@@ -12,7 +12,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2.5rem;
-  color: #0d47a1;
+  color: #608334;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -20,7 +20,7 @@
 .etiqueta {
   font-weight: 600;
   font-size: 1rem;
-  color: #0d47a1;
+  color: #608334;
   margin-bottom: 6px;
   display: block;
 }
@@ -28,24 +28,24 @@
 .campo {
   width: 100%; 
   box-sizing: border-box;
-  border: 2px solid #cfd8dc;
+  border: 2px solid #CBDDB5;
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fefefe;
+  background-color: #F7FEEF;
   color: #212121;
 }
 
 .campo:focus {
-  border-color: #2e59cf;
-  box-shadow: 0 0 0 0.25rem rgba(13, 71, 161, 0.15);
+  border-color: #A8CA7E;
+  box-shadow: 0 0 0 0.25rem rgba(168, 202, 126, 0.15); /* #A8CA7E */
   outline: none;
   background-color: #ffffff;
 }
 
 .boton {
-  background-color: #44a349;
+  background-color: #608334;
   color: white;
   border: none;
   border-radius: 10px;
@@ -57,9 +57,8 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
 .boton:hover {
-  background-color: #4e9652;
+  background-color: #97B770;
   transform: translateY(-1px);
 }
 
@@ -79,10 +78,21 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: #6c757d;
+  color: #A8CA7E;
   cursor: pointer;
 }
 
 .ojito-icono:hover {
-  color: #0d47a1;
+  color: #608334;
+}
+
+.link-login {
+  color: #608334;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.link-login:hover {
+  color: #A8CA7E;
 }

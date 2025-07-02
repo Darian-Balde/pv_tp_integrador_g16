@@ -19,7 +19,6 @@ const Navbar = () => {
     className="navbar navbar-expand-lg"
     style={{
       height: 70,
-      background: "linear-gradient(90deg, #6bbf7b 0%, #4e9e5d 100%)",
     }}
   >
     <div className="container-fluid">
