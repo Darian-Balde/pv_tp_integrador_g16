@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
+import { useAlert } from "../components/AlertContext"; // 👈 Importa el hook
 
 // Función auxiliar para validar email simple
 const validateEmail = (email) => {
@@ -9,6 +10,7 @@ const validateEmail = (email) => {
 
 const Register = () => {
   const navigate = useNavigate();
+  const { showAlert } = useAlert(); // 👈 Usa el hook
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
@@ -66,7 +68,7 @@ const Register = () => {
     // Verificar si el email ya está registrado
     const alreadyRegistered = users.some((user) => user.email === form.email);
     if (alreadyRegistered) {
-      alert("Ese correo ya está registrado");
+      showAlert("Ese correo ya está registrado", "danger"); // 👈 Usa alerta global
       return;
     }
 
@@ -78,8 +80,8 @@ const Register = () => {
       password: form.password };
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
 
-    alert("¡Registro exitoso! Ahora podés iniciar sesión.");
-    navigate("/login");
+    showAlert("¡Registro exitoso! Ahora podés iniciar sesión.", "success"); // 👈 Usa alerta global
+    setTimeout(() => navigate("/login"), 1200);
   };
   
   return (   
