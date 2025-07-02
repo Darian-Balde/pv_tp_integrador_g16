@@ -57,7 +57,8 @@ const Navbar = () => {
             <li className="nav-item d-flex align-items-center mx-2">
               <span className="badge rounded-pill bg-light text-success px-3 py-2" title={user.email}>
                 <i className="bi bi-person-circle me-1"></i>
-                {user.email}
+                {user.nombre ? user.nombre : user.email}
+
               </span>
             </li>
           )}
@@ -104,7 +105,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li style={{ color: "#9ee9be" }}>{user.email}</li>
+                <li style={{ color: "#9ee9be" }}>{user.nombre}</li>
                 <li>
                   <Link
                     to="/login"
