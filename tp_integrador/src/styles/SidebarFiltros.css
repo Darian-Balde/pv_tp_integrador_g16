@@ -3,7 +3,16 @@
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(96, 131, 52, 0.13);
   border: 1.5px solid #A8CA7E;
-  padding: 1.5rem 1rem;
+  /*padding: 1.5rem 1rem;*/
+  padding: calc(1.5rem + 70px) 1rem;
+  position: fixed;
+  height: 100vh;
+  left: 0; 
+  width: 250px;
+  overflow-y: auto;
+  z-index: 1000; 
+  top: 0;
+
 }
 .filter-section h5 {
   color: #608334;
@@ -52,4 +61,13 @@ body.dark .filter-list li:hover {
 body.dark .filter-list li.activa {
   background: linear-gradient(90deg, #14532d 0%, #388e3c 100%);
   color: #fff;
+}
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* oscuro translúcido */
+  z-index: 900; /* justo por debajo del panel lateral */
 }

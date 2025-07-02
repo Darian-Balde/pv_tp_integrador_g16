@@ -329,3 +329,44 @@ body.dark .btn-filtro-abajo .btn:hover, body.dark .btn-filtro-abajo .btn:focus {
     padding: 0.35rem 0.7rem;
   }
 }
+
+/* Mensaje cuando el carrito está vacío */
+.mensaje-vacio {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #3e5c49;
+  background: #f7feef;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(96, 131, 52, 0.1);
+  margin: 3rem auto;
+  max-width: 420px;
+  animation: aparecer 0.4s ease-out;
+}
+
+.mensaje-vacio i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #83a559;
+}
+
+.mensaje-vacio h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.mensaje-vacio p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #4e9e5d;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
