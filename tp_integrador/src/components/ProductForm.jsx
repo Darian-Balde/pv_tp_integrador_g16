@@ -10,7 +10,6 @@ const ProductForm = ({ onSubmit, initialData }) => {
     category: "",
     image: ""
   });
-  const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
 
   useEffect(() => {
     if (initialData) {
@@ -34,23 +33,14 @@ const ProductForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(product);
-    setAlert({
-      show: true,
-      message: initialData ? "Producto editado correctamente" : "Producto creado exitosamente",
-      variant: "success"
-    });
+    // Eliminado setAlert
   };
 
   return (
     <form onSubmit={handleSubmit} className="product-form p-4 border rounded bg-light">
       <h2 className="mb-4">{initialData ? "Editar Producto" : "Crear Producto"}</h2>
 
-      {alert.show && (
-        <div className={`alert alert-${alert.variant} alert-dismissible fade show`} role="alert">
-          {alert.message}
-          <button type="button" className="btn-close" aria-label="Close" onClick={() => setAlert({ ...alert, show: false })}></button>
-        </div>
-      )}
+      {/* Eliminada la alerta local */}
 
       <input
         name="title"
