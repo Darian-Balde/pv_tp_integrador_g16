@@ -2,15 +2,17 @@
   max-width: 900px;
   margin: 6rem auto 3rem;
   padding: 2rem;
+  background-color: #F7FEEF; /* Fondo igual que FavoriteList */
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .detalle-contenido {
   display: flex;
   gap: 2rem;
-  background-color: #ffffffd8;
+  background-color: #fff; /* Fondo blanco como FavoriteList */
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10); /* Verde de la paleta */
   position: relative;
 }
 
@@ -22,16 +24,16 @@
   font-size: 2rem;
   background: none;
   border: none;
-  color: #adb5bd;
+  color: #97B770; /* Verde medio de la paleta */
   transition: color 0.2s, transform 0.1s;
   z-index: 2;
   padding: 0.2em 0.3em;
 }
 .favorite-icon.btn-fav.active {
-  color: #e63946;
+  color: #e63946; /* Rojo para favorito */
 }
 .favorite-icon.btn-fav:hover {
-  color: #e63946;
+  color: #A8CA7E; /* Verde claro al pasar el mouse */
   transform: scale(1.15);
 }
 
@@ -47,14 +49,17 @@
   height: 250px;
   object-fit: contain;
   border-radius: 8px;
+  background-color: #F7FEEF;
+  padding: 10px;
 }
 
 /* Título verde */
 .detalle-titulo-verde {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #198754;
+  color: #608334; /* Verde fuerte de la paleta */
   font-weight: bold;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .detalle-info {
@@ -62,22 +67,34 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .detalle-info h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  /* El color lo maneja .detalle-titulo-verde */
 }
 
-.detalle-info p {
-  font-size: 0.9rem;
+.detalle-categoria,
+.detalle-rating,
+.detalle-precio {
+  font-size: 0.95rem;
+  color: #3E5C49; /* Verde oscuro para títulos de detalles */
+  margin: 2px 0;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.detalle-precio .valor {
+  color: #198754; /* Verde solo para el valor */
+  font-weight: 600;
+}
+
+.detalle-descripcion {
+  font-size: 0.95rem;
+  color: #3E5C49;
   margin: 0.5rem 0;
-  color: #444;
-}
-
-.detalle-info strong {
-  color: #1565c0;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* Botón para volver mejorado */
@@ -94,16 +111,17 @@
   font-weight: 600;
   font-size: 1rem;
   padding: 0.6em 1.3em;
-  background: linear-gradient(90deg, #4b99b8 0%, #60a1c7 100%);
-  color: #fff !important;
-  box-shadow: 0 2px 8px rgba(46,93,59,0.08);
+  background: linear-gradient(90deg, #97B770 0%, #A8CA7E 100%);
+  color: #3E5C49 !important;
+  box-shadow: 0 2px 8px rgba(96, 131, 52, 0.08);
   text-decoration: none;
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
   margin-top: 1rem;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 .btn-volver:hover, .btn-volver:focus {
-  background: linear-gradient(90deg, #1565c0 0%, #4b99b8 100%);
-  color: #fff !important;
+  background: linear-gradient(90deg, #608334 0%, #A8CA7E 100%);
+  color: #F7FEEF !important;
   text-decoration: none;
 }
 

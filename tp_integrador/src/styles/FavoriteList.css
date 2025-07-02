@@ -1,10 +1,26 @@
 /* FavoriteList.css */
 
+.favorite-category,
+.favorite-rating,
+.favorite-price {
+  font-size: 0.95rem;
+  color: #3E5C49; /* Verde oscuro para títulos de detalles */
+  margin: 2px 0;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 600; /* Negrita para el título */
+}
+
+.favorite-price .valor {
+  color: #198754; /* Verde solo para el valor */
+  font-weight: 600;
+}
+
 .favorites-container {
   padding: 3rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f9f9f9;
+  background-color: #F7FEEF;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .favorites-title {
@@ -12,9 +28,10 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
-  color: #0d47a1;
+  color: #608334; /* Verde fuerte de la paleta */
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .favorites-list {
@@ -33,12 +50,14 @@
   max-width: 800px;
   padding: 1.5rem;
   border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  background-color: #fff; /* Fondo blanco como ProductList */
+  box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10);
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .favorite-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(96, 131, 52, 0.18);
+  background-color: #f5f5f5; /* Ligero gris al hover */
 }
 
 .favorite-image {
@@ -47,7 +66,7 @@
   object-fit: contain;
   margin-right: 1.5rem;
   border-radius: 8px;
-  background-color: #f1f1f1;
+  background-color: #F7FEEF;
   padding: 10px;
 }
 
@@ -64,15 +83,16 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #212121;
+  color: #608334; /* Verde fuerte */
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .favorite-category,
-.favorite-price,
 .favorite-rating {
   font-size: 0.95rem;
-  color: #555;
+  color: #3E5C49; /* Verde oscuro para detalles */
   margin: 2px 0;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* Botón corazón igual que ProductList */
@@ -83,16 +103,16 @@
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #adb5bd;
+  color: #97B770; /* Verde medio de la paleta */
   transition: color 0.2s, transform 0.1s;
   z-index: 2;
   padding: 0.2em 0.3em;
 }
 .favorite-icon.btn-fav.active {
-  color: #e63946;
+  color: #e63946; /* Rojo para favorito */
 }
 .favorite-icon.btn-fav:hover {
-  color: #e63946;
+  color: #A8CA7E; /* Verde claro al pasar el mouse */
   transform: scale(1.15);
 }
 
@@ -107,15 +127,16 @@
   font-size: 1rem;
   padding: 0.5em 1.1em;
   transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-  box-shadow: 0 2px 8px rgba(46,93,59,0.08);
+  box-shadow: 0 2px 8px rgba(96, 131, 52, 0.08);
   text-decoration: none;
   outline: none;
-  background: linear-gradient(90deg, #4e9e5d 0%, #6bbf7b 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #97B770 0%, #A8CA7E 100%);
+  color: #3E5C49;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 .botones-lista .btn-detalle:hover, .botones-lista .btn-detalle:focus {
-  background: linear-gradient(90deg, #388e3c 0%, #4e9e5d 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #608334 0%, #A8CA7E 100%);
+  color: #F7FEEF;
 }
 
 /* Quitar subrayado a los links de los botones */

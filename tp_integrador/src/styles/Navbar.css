@@ -179,6 +179,16 @@
   font-weight: 900;
 }
 
+/* Color verde clarito para la opción activa en menú móvil */
+.mobile-menu ul li a.active-mobile {
+  color: #9ee9be !important;
+  font-weight: 900;
+}
+
+.navbar .navbar-brand .tp-title-navbar {
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

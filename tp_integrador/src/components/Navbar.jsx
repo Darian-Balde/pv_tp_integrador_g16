@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import womanLogo from "../assets/woman.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,12 +12,12 @@ const Navbar = () => {
 
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   return (
   <nav
     className="navbar navbar-expand-lg"
     style={{
-      fontFamily: "'Montserrat', Arial, sans-serif",
       height: 70,
       background: "linear-gradient(90deg, #6bbf7b 0%, #4e9e5d 100%)",
     }}
@@ -26,7 +26,7 @@ const Navbar = () => {
       {/* Logo */}
       <Link to="/" className="navbar-brand d-flex align-items-center" onClick={() => setIsOpen(false)}>
         <img src={womanLogo} alt="Logo" className="me-2" style={{ width: 40, height: 40 }} />
-        <span style={{ fontWeight: 700, fontSize: 22, color: "#fff" }}>TP Integrador</span>
+        <span className="tp-title-navbar" style={{ fontWeight: 700, fontSize: 22, color: "#fff" }}>TP Integrador</span>
       </Link>
 
       {/* Botón hamburguesa */}
@@ -93,15 +93,62 @@ const Navbar = () => {
       {isOpen && (
         <div className="mobile-menu">
           <ul>
-            <li><Link to="/" onClick={() => setIsOpen(false)} className="active">INICIO</Link></li>
-            <li><Link to="/favoritos" onClick={() => setIsOpen(false)}>FAVORITO</Link></li>
-            <li><Link to="/crear" onClick={() => setIsOpen(false)}>SERVICIOS</Link></li>
-            <li><Link to="/portafolio" onClick={() => setIsOpen(false)}>PORTAFOLIO</Link></li>
-            <li><Link to="/contacto" onClick={() => setIsOpen(false)}>CONTACTO</Link></li>
+            <li>
+              <Link
+                to="/"
+                onClick={() => setIsOpen(false)}
+                className={location.pathname === "/" ? "active-mobile" : ""}
+              >
+                INICIO
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/favoritos"
+                onClick={() => setIsOpen(false)}
+                className={location.pathname === "/favoritos" ? "active-mobile" : ""}
+              >
+                FAVORITO
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/crear"
+                onClick={() => setIsOpen(false)}
+                className={location.pathname === "/crear" ? "active-mobile" : ""}
+              >
+                SERVICIOS
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contacto"
+                onClick={() => setIsOpen(false)}
+                className={location.pathname === "/contacto" ? "active-mobile" : ""}
+              >
+                CONTACTO
+              </Link>
+            </li>
             {!user ? (
               <>
-                <li><Link to="/login" onClick={() => setIsOpen(false)}>INICIAR SESIÓN</Link></li>
-                <li><Link to="/register" onClick={() => setIsOpen(false)}>REGISTRARSE</Link></li>
+                <li>
+                  <Link
+                    to="/login"
+                    onClick={() => setIsOpen(false)}
+                    className={location.pathname === "/login" ? "active-mobile" : ""}
+                  >
+                    INICIAR SESIÓN
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/register"
+                    onClick={() => setIsOpen(false)}
+                    className={location.pathname === "/register" ? "active-mobile" : ""}
+                  >
+                    REGISTRARSE
+                  </Link>
+                </li>
               </>
             ) : (
               <>
