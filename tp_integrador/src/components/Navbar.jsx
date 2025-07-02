@@ -11,6 +11,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const user = useSelector((state) => state.user.user);
+  const cartCount = useSelector((state) => state.cart.items.reduce((acc, item) => acc + (item.qty || 1), 0));
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -51,6 +52,16 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <Link to="/crear" className="nav-link nav-link-tab">Crear Producto</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/carrito" className="nav-link nav-link-tab position-relative">
+              <i className="bi bi-bag"></i> Carrito
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{fontSize:'0.8rem'}}>
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </li>
           {user && (
             <li className="nav-item d-flex align-items-center mx-2">
@@ -126,6 +137,21 @@ const Navbar = () => {
                 className={location.pathname === "/contacto" ? "active-mobile" : ""}
               >
                 CONTACTO
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/carrito"
+                onClick={() => setIsOpen(false)}
+                className={location.pathname === "/carrito" ? "active-mobile" : ""}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5em', position: 'relative' }}
+              >
+                <i className="bi bi-bag"></i> Carrito
+                {cartCount > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{fontSize:'0.8rem'}}>
+                    {cartCount}
+                  </span>
+                )}
               </Link>
             </li>
             {!user ? (

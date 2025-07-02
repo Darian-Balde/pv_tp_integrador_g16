@@ -97,32 +97,45 @@
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* Botón para volver mejorado */
-.volver-container {
-  text-align: left;
+/* Botones de acción en el detalle */
+.detalle-botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
-
-.btn-volver {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
+.detalle-botones .btn {
+  flex: 1 1 180px;
+  min-width: 150px;
+  max-width: 250px;
   font-size: 1rem;
   padding: 0.6em 1.3em;
+  border-radius: 6px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  box-shadow: 0 2px 8px rgba(96, 131, 52, 0.08);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.btn-agregar-carrito {
+  background: linear-gradient(90deg, #198754 0%, #6bbf7b 100%);
+  color: #fff;
+  border: none;
+}
+.btn-agregar-carrito:hover, .btn-agregar-carrito:focus {
+  background: linear-gradient(90deg, #145a32 0%, #6bbf7b 100%);
+  color: #fff;
+}
+.btn-volver {
   background: linear-gradient(90deg, #97B770 0%, #A8CA7E 100%);
   color: #3E5C49 !important;
-  box-shadow: 0 2px 8px rgba(96, 131, 52, 0.08);
-  text-decoration: none;
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-  margin-top: 1rem;
-  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border: none;
 }
 .btn-volver:hover, .btn-volver:focus {
   background: linear-gradient(90deg, #608334 0%, #A8CA7E 100%);
   color: #F7FEEF !important;
-  text-decoration: none;
 }
 
 /* Responsive */
@@ -154,5 +167,11 @@
 
   .volver-container{
     text-align: center;
+  }
+
+  .detalle-botones {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
   }
 }
