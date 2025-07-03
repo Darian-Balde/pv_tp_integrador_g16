@@ -51,6 +51,7 @@ tp_integrador/
 │   ├── assets/
 │   │   └── woman.png
 │   ├── components/
+│   │   ├── CarritoList.jsx
 │   │   ├── FavoritosList.jsx
 │   │   ├── Footer.jsx
 │   │   ├── Navbar.css
@@ -59,16 +60,19 @@ tp_integrador/
 │   │   ├── ProductForm.jsx
 │   │   └── ProductList.jsx
 │   ├── pages/
+│   │   ├── Carrito.jsx
 │   │   ├── CrearProductos.jsx
 │   │   ├── DetalleProductos.jsx
 │   │   ├── EditarProductos.jsx
 │   │   └── Favoritos.jsx
 │   ├── style/
+│   │   ├── Carrito.css
 │   │   ├── DetalleProductos.css
 │   │   ├── Favoritos.css
 │   │   └── ProductList.css
 │   ├── App.css
 │   ├── App.jsx
+│   ├── CarritoSlice.jsx
 │   ├── FavoritosSlice.jsx
 │   ├── index.css
 │   ├── main.jsx
@@ -86,6 +90,7 @@ tp_integrador/
 * Página de inicio con cards de productos obtenidos desde una API externa.
 * Visualización de imagen, nombre, precio, descripción y categoría.
 * Marcado de productos como favoritos mediante icono o checkbox.
+* Carrito de compras: permite agregar productos al carrito, ver el listado y eliminar productos del mismo.
 * Navegación hacia una vista de detalle del producto.
 * Página de favoritos con filtrado automático según estado global.
 * Componente de formulario reutilizable para crear o editar productos (simulado en frontend).
@@ -93,21 +98,23 @@ tp_integrador/
 
 ## Detalle técnico por módulo
 
-| Módulo    | Descripción                                                                                                                              |
-| :-------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
-| Inicio    | Carga productos desde la API externa y renderiza en cards. Se permite marcar como favorito o ver detalle.                                 |
-| Favoritos | Filtra los productos marcados como favoritos y los muestra en una vista independiente.                                                   |
-| Detalle   | Permite visualizar en detalle un producto individual, navegando por ID desde la URL.                                                     |
+| Módulo     | Descripción                                                                                                                              |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------------------- |
+| Inicio     | Carga productos desde la API externa y renderiza en cards. Se permite marcar como favorito o ver detalle.                                 |
+| Favoritos  | Filtra los productos marcados como favoritos y los muestra en una vista independiente.                                                   |
+| Carrito    | Permite agregar productos al carrito, visualizar el listado de productos agregados y eliminarlos.                                        |
+| Detalle    | Permite visualizar en detalle un producto individual, navegando por ID desde la URL.                                                     |
 | Formulario | Utiliza un único componente para creación o edición, con campos dinámicos y validaciones mínimas.                                        |
 
 ## Manual de pruebas
 
-| Componente | Prueba esperada             | Método                        |
-| :--------- | :-------------------------- | :---------------------------- |
-| Inicio     | Productos cargados desde la API | Ver cards al iniciar app      |
-| Favoritos  | Persistencia al marcar y desmarcar | Verificación visual           |
-| Detalle    | Renderizado correcto por ID | Ingreso desde botón Ver más   |
-| Formulario | Renderizado dinámico de campos | Crear/editar producto simulado |
+| Componente | Prueba esperada                        | Método                        |
+| :--------- | :------------------------------------- | :---------------------------- |
+| Inicio     | Productos cargados desde la API        | Ver cards al iniciar app      |
+| Favoritos  | Persistencia al marcar y desmarcar     | Verificación visual           |
+| Carrito    | Agregar y eliminar productos del carrito | Agregar productos y verificar en la vista de carrito |
+| Detalle    | Renderizado correcto por ID            | Ingreso desde botón Ver más   |
+| Formulario | Renderizado dinámico de campos         | Crear/editar producto simulado |
 | Redux      | Actualización de estado en tiempo real | Usar Redux DevTools           |
 
 
@@ -129,7 +136,8 @@ tp_integrador/
 4.  Acceder a la app desde el navegador
     
     http://localhost:5173
-    
+
+5.  Para acceder al contenido de esta página, es necesario registrarse e iniciar sesión
 
 ## Integrantes del grupo
 
