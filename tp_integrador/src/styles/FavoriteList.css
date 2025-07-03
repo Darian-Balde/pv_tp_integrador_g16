@@ -134,7 +134,12 @@
 }
 
 /* Botón detalles igual que ProductList */
-.botones-lista .btn-detalle {
+.botones-lista {
+  display: flex;
+  gap: 1rem; /* Espacio entre los botones */
+  align-items: center;
+}
+.botones-lista .btn-detalle{
   display: flex;
   align-items: center;
   gap: 0.4em;

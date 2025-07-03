@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
+import { addToCart } from "../store/CartSlice";
 import { Link } from "react-router-dom";
 import "../styles/FavoriteList.css";
 
@@ -72,6 +73,10 @@ const FavoritesList = () => {
                     <i className="bi bi-info-circle"></i> Ver más
                   </button>
                 </Link>
+
+                <button className="btn btn-agregar-carrito" onClick={() => dispatch(addToCart(p))}>
+                  <i className="bi bi-bag-plus"></i> Agregar al carrito
+                </button>
               </div>
             </div>
           </div>

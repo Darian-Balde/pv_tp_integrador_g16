@@ -10,7 +10,7 @@
   display: flex;
   gap: 2rem;
   background-color: #fff; /* Fondo blanco como FavoriteList */
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10); /* Verde de la paleta */
   position: relative;
@@ -20,7 +20,7 @@
 .favorite-icon.btn-fav {
   position: absolute;
   top: 18px;
-  right: 24px;
+  right: 12px;
   font-size: 2rem;
   background: none;
   border: none;
