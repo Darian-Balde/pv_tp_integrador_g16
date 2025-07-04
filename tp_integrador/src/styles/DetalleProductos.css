@@ -1,6 +1,6 @@
 .detalle-container {
   max-width: 900px;
-  margin: 6rem auto 3rem;
+  margin: 0 auto 3rem; /* Menos margen arriba respecto al navbar */
   padding: 2rem;
   background-color: #F7FEEF; /* Fondo igual que FavoriteList */
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;

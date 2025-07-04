@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
 import { Link, useLocation } from "react-router-dom";
-import { addToCart } from "../store/CartSlice";
+import { addToCart, clearLastAdded } from "../store/CartSlice"; // Importa clearLastAdded
 import "../styles/ProductList.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SidebarFilters from "./SidebarFiltros";
@@ -13,6 +13,7 @@ const IMAGES_PER_VIEW_MOBILE = 2;
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.items);
+  const lastAdded = useSelector((state) => state.cart.lastAdded); // Obtiene el último agregado
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -23,6 +24,8 @@ const ProductList = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [animatingId, setAnimatingId] = useState(null);
   const timeoutRef = useRef();
+
+  const [showAlert, setShowAlert] = useState(false); // Estado local para mostrar/ocultar el alert
 
   const categoriasDisponibles = [...new Set(products.map((p) => p.category))];
 
@@ -62,6 +65,17 @@ const ProductList = () => {
     return () => clearInterval(interval);
   }, [products.length, imagesPerView]);
 
+  useEffect(() => {
+    if (lastAdded) {
+      setShowAlert(true);
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        dispatch(clearLastAdded());
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [lastAdded, dispatch]);
+
   const isFavorite = (id) => favorites.some((item) => item.id === id);
   const handleToggle = (product) => dispatch(toggleFavorite(product));
 
@@ -97,6 +111,28 @@ const ProductList = () => {
   return (
     <div className="product-container" style={{ display: "flex", gap: "1.5rem" }}>
       <div style={{ flex: 1 }}>
+        {/* ALERTA agregado al carrito */}
+        {showAlert && lastAdded && (
+          <div
+            style={{
+              position: "fixed",
+              top: "10%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 20000,
+              minWidth: 280,
+              maxWidth: 400,
+              width: "90vw",
+              textAlign: "center",
+              pointerEvents: "none"
+            }}
+          >
+            <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ pointerEvents: "auto" }}>
+              <strong>{lastAdded.title}</strong> fue agregado al carrito.
+            </div>
+          </div>
+        )}
+
         {/* Banners */}
         <div className="fullwidth-banner mb-1">
           <div className="bg-success bg-opacity-75 text-white text-center py-2 fs-4 fw-bold">

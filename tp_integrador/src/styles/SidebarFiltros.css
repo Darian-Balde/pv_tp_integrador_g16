@@ -71,3 +71,9 @@ body.dark .filter-list li.activa {
   background-color: rgba(0, 0, 0, 0.4); /* oscuro translúcido */
   z-index: 900; /* justo por debajo del panel lateral */
 }
+.btn.btn-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

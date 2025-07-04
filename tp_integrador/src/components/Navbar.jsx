@@ -62,7 +62,7 @@ const Navbar = () => {
               <Link to="/favoritos" className="nav-link nav-link-tab d-flex align-items-center">Favoritos</Link>
             </li>
             <li className="nav-item">
-              <Link to="/crear" className="nav-link nav-link-tab d-flex align-items-center">Crear Producto</Link>
+              <Link to="/crear" className="nav-link nav-link-tab d-flex align-items-center">Servicios</Link>
             </li>
             <li className="nav-item position-relative">
               <Link
@@ -122,7 +122,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Menú Móvil */}
+        {/* Menú Responsive */}
         {isOpen && (
           <div className="mobile-menu">
             <ul>
@@ -141,11 +141,7 @@ const Navbar = () => {
                   SERVICIOS
                 </Link>
               </li>
-              <li>
-                <Link to="/contacto" onClick={() => setIsOpen(false)} className={location.pathname === "/contacto" ? "active-mobile" : ""}>
-                  CONTACTO
-                </Link>
-              </li>
+              
               <li style={{ position: "relative" }}>
                 <Link
                   to="/carrito"
