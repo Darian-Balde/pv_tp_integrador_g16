@@ -9,7 +9,7 @@ const GlobalAlert = () => {
   return (
     <div
       className={`alert alert-${alert.variant} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`}
-      style={{ zIndex: 9999, minWidth: 300, maxWidth: 500 }}
+      style={{ zIndex: 12001, minWidth: 300, maxWidth: 500 }}
       role="alert"
     >
       {alert.message}
