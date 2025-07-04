@@ -2,12 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
 import { addToCart } from "../store/CartSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // <-- Importa useLocation
 import "../styles/FavoriteList.css";
 
 const FavoritesList = () => {
   const favorites = useSelector((state) => state.favorites.items);
   const dispatch = useDispatch();
+  const location = useLocation(); // <-- Obtiene location
 
   const handleToggle = (product) => {
     dispatch(toggleFavorite(product));
@@ -68,7 +69,11 @@ const FavoritesList = () => {
                 </span>
               </p>
               <div className="botones-lista">
-                <Link to={`/detalle/${p.id}`} className="no-underline">
+                <Link
+                  to={`/detalle/${p.id}`}
+                  state={{ from: location.pathname }} // <-- Pasa el origen
+                  className="no-underline"
+                >
                   <button className="btn-detalle">
                     <i className="bi bi-info-circle"></i> Ver más
                   </button>

@@ -26,7 +26,7 @@
   padding: 0 1.7rem;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #fff;
+  color: #fff !important;      
   border-radius: 0;
   background: transparent;
   transition: 
@@ -44,9 +44,11 @@
   box-sizing: border-box;
 }
 
+/* Hover y active personalizados */
 .nav-link-tab:hover, .nav-link-tab:focus {
   background: #A8CA7E;
-  color: #608334 !important;
+  color: #fff !important;
+  font-weight: bold;
   box-shadow: 0 2px 12px 0 rgba(46,93,59,0.18);
   z-index: 2;
 }
@@ -165,15 +167,18 @@
 }
 
 .mobile-menu ul li a {
-  color: #fff;
+  color: #fff !important;
   font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
-.mobile-menu ul li a:hover {
-  color: #6bbf7b;
+/* Menú móvil: letras blancas y negrita al hover */
+.mobile-menu ul li a:hover,
+.mobile-menu ul li a:focus {
+  color: #fff !important;
+  font-weight: bold;
 }
 
 .mobile-menu ul li a.active {

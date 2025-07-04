@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom"; // <-- Agrega useLocation
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
 import { addToCart } from "../store/CartSlice";
@@ -12,11 +12,15 @@ const DetalleProducto = () => {
   );
   const favorites = useSelector((state) => state.favorites.items);
   const dispatch = useDispatch();
+  const location = useLocation(); // <-- Obtiene location
 
   const isFavorite = (id) => favorites.some((item) => item.id === id);
   const handleToggle = (product) => dispatch(toggleFavorite(product));
 
   if (!product) return <p>Producto no encontrado.</p>;
+
+  // Usa el origen si existe, sino vuelve al inicio
+  const volverA = location.state?.from || "/";
 
   return (
     <div className="detalle-container">
@@ -73,8 +77,8 @@ const DetalleProducto = () => {
             <button className="btn btn-agregar-carrito" onClick={() => dispatch(addToCart(product))}>
               <i className="bi bi-bag-plus"></i> Agregar al carrito
             </button>
-            <Link to="/" className="btn btn-volver">
-              <i className="bi bi-arrow-left-circle"></i> Volver al inicio
+            <Link to={volverA} className="btn btn-volver">
+              <i className="bi bi-arrow-left-circle"></i> Volver
             </Link>
           </div>
         </div>

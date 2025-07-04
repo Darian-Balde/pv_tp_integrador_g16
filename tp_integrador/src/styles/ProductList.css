@@ -29,6 +29,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
+  list-style: none;      
+  padding-left: 0;       
 }
 
 /* Tarjeta individual */
@@ -42,8 +44,7 @@ body {
   transition: transform 0.2s;
 }
 .product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
 
 /* Imagen del producto */

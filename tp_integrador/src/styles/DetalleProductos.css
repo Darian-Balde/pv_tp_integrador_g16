@@ -171,7 +171,16 @@
 
   .detalle-botones {
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 0.5rem;           /* Menor espacio entre botones */
     align-items: stretch;
+  }
+  .detalle-botones .btn {
+    flex: unset;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 0.5em 0.8em;  /* Botón más chico */
+    font-size: 0.98rem;
+    margin: 0;
   }
 }
