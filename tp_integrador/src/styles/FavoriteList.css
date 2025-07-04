@@ -18,8 +18,8 @@
 .favorites-container {
   padding: 3rem 1.5rem;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: #F7FEEF;
+  margin: -70px auto;
+  background-color: #e8fad4;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 

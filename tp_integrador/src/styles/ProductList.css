@@ -12,7 +12,8 @@ body {
 .product-container {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 1rem;
+  padding: 0rem;
+  margin-top: -70px;
 }
 
 /* Título */
@@ -174,7 +175,7 @@ body {
   align-items: center;
 }
 .fullwidth-banner > div {
-  background: #78ad8d !important; /* Cambia el color aquí */
+  background: #83a559 !important; /* Cambia el color aquí */
   color: #fff !important;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
   text-align: center;
