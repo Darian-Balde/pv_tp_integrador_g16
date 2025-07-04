@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
+  lastAdded: null, // <-- nuevo estado
 };
 
 const cartSlice = createSlice({
@@ -16,6 +17,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...item, qty: 1 });
       }
+      state.lastAdded = item; // <-- guarda el último producto agregado
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((i) => i.id !== action.payload);
@@ -23,8 +25,11 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
     },
+    clearLastAdded: (state) => {
+      state.lastAdded = null;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, clearLastAdded } = cartSlice.actions;
 export default cartSlice.reducer;

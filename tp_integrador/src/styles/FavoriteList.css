@@ -18,8 +18,8 @@
 .favorites-container {
   padding: 3rem 1.5rem;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: #F7FEEF;
+  margin: -70px auto;
+  background-color: #e8fad4;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -134,7 +134,12 @@
 }
 
 /* Botón detalles igual que ProductList */
-.botones-lista .btn-detalle {
+.botones-lista {
+  display: flex;
+  gap: 1rem; /* Espacio entre los botones */
+  align-items: center;
+}
+.botones-lista .btn-detalle{
   display: flex;
   align-items: center;
   gap: 0.4em;

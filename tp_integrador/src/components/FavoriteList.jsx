@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
-import { Link } from "react-router-dom";
+import { addToCart, clearLastAdded } from "../store/CartSlice";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/FavoriteList.css";
 
 const FavoritesList = () => {
   const favorites = useSelector((state) => state.favorites.items);
+  const lastAdded = useSelector((state) => state.cart.lastAdded);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    if (lastAdded) {
+      setShowAlert(true);
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        dispatch(clearLastAdded());
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [lastAdded, dispatch]);
 
   const handleToggle = (product) => {
     dispatch(toggleFavorite(product));
@@ -20,6 +36,28 @@ const FavoritesList = () => {
 
   return (
     <div className="favorites-container">
+      {/* ALERTA agregado al carrito centrada */}
+      {showAlert && lastAdded && (
+        <div
+          style={{
+            position: "fixed",
+            top: "10%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 20000,
+            minWidth: 280,
+            maxWidth: 400,
+            width: "90vw",
+            textAlign: "center",
+            pointerEvents: "none"
+          }}
+        >
+          <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ pointerEvents: "auto" }}>
+            <strong>{lastAdded.title}</strong> fue agregado al carrito.
+          </div>
+        </div>
+      )}
+
       <h2 className="favorites-title">Favoritos</h2>
       <div className="favorites-list">
         {favorites.map((p) => (
@@ -67,11 +105,19 @@ const FavoritesList = () => {
                 </span>
               </p>
               <div className="botones-lista">
-                <Link to={`/detalle/${p.id}`} className="no-underline">
+                <Link
+                  to={`/detalle/${p.id}`}
+                  state={{ from: location.pathname }}
+                  className="no-underline"
+                >
                   <button className="btn-detalle">
                     <i className="bi bi-info-circle"></i> Ver más
                   </button>
                 </Link>
+
+                <button className="btn btn-agregar-carrito" onClick={() => dispatch(addToCart(p))}>
+                  <i className="bi bi-bag-plus"></i> Agregar al carrito
+                </button>
               </div>
             </div>
           </div>

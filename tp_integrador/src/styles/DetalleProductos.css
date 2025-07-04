@@ -1,6 +1,6 @@
 .detalle-container {
   max-width: 900px;
-  margin: 6rem auto 3rem;
+  margin: 0 auto 3rem; /* Menos margen arriba respecto al navbar */
   padding: 2rem;
   background-color: #F7FEEF; /* Fondo igual que FavoriteList */
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,7 +10,7 @@
   display: flex;
   gap: 2rem;
   background-color: #fff; /* Fondo blanco como FavoriteList */
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10); /* Verde de la paleta */
   position: relative;
@@ -20,7 +20,7 @@
 .favorite-icon.btn-fav {
   position: absolute;
   top: 18px;
-  right: 24px;
+  right: 12px;
   font-size: 2rem;
   background: none;
   border: none;
@@ -171,7 +171,16 @@
 
   .detalle-botones {
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 0.5rem;           /* Menor espacio entre botones */
     align-items: stretch;
+  }
+  .detalle-botones .btn {
+    flex: unset;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 0.5em 0.8em;  /* Botón más chico */
+    font-size: 0.98rem;
+    margin: 0;
   }
 }

@@ -56,32 +56,32 @@ const Navbar = () => {
         <div className="desktop-menu d-none d-lg-block">
           <ul className="navbar-nav ms-auto align-items-stretch">
             <li className="nav-item">
-              <Link to="/" className="nav-link nav-link-tab">Inicio</Link>
+              <Link to="/" className="nav-link nav-link-tab d-flex align-items-center">Inicio</Link>
             </li>
             <li className="nav-item">
-              <Link to="/favoritos" className="nav-link nav-link-tab">Favoritos</Link>
+              <Link to="/favoritos" className="nav-link nav-link-tab d-flex align-items-center">Favoritos</Link>
             </li>
             <li className="nav-item">
-              <Link to="/crear" className="nav-link nav-link-tab">Crear Producto</Link>
+              <Link to="/crear" className="nav-link nav-link-tab d-flex align-items-center">Servicios</Link>
             </li>
             <li className="nav-item position-relative">
-               <Link
+              <Link
                 to="/carrito"
-                className="nav-link nav-link-tab d-flex align-items-center gap-1"
-                 style={{ display: "flex", alignItems: "center" }}
-                  >
-               <span style={{ position: "relative", display: "flex", alignItems: "center" }}>
-                <i className="bi bi-bag" style={{ fontSize: "1.3rem" }}></i>
+                className="nav-link nav-link-tab d-flex align-items-center"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <span style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                  <i className="bi bi-bag" style={{ fontSize: "1.3rem" }}></i>
                   {cartCount > 0 && (
-                 <span
-                   className="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
-                     style={{ fontSize: "0.7rem", zIndex: 10, top: "15%" }}
-                     >
+                    <span
+                      className="position-absolute start-100 translate-middle badge rounded-pill bg-danger"
+                      style={{ fontSize: "0.7rem", zIndex: 10, top: "15%" }}
+                    >
                       {cartCount}
-                   </span>
+                    </span>
                   )}
-               </span>
-               <span style={{ lineHeight: "1" }}>Carrito</span>
+                </span>
+                <span style={{ lineHeight: "1", marginLeft: "0.4em" }}>Carrito</span>
               </Link>
             </li>
 
@@ -89,7 +89,7 @@ const Navbar = () => {
               <li className="nav-item d-flex align-items-center mx-2">
                 <span className="badge rounded-pill bg-light text-success px-3 py-2" title={user.email}>
                   <i className="bi bi-person-circle me-1"></i>
-                  {user.nombre ? user.nombre : user.email}
+                 {user.nombre ? user.nombre : user.email}
                 </span>
               </li>
             )}
@@ -122,7 +122,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Menú Móvil */}
+        {/* Menú Responsive */}
         {isOpen && (
           <div className="mobile-menu">
             <ul>
@@ -141,11 +141,7 @@ const Navbar = () => {
                   SERVICIOS
                 </Link>
               </li>
-              <li>
-                <Link to="/contacto" onClick={() => setIsOpen(false)} className={location.pathname === "/contacto" ? "active-mobile" : ""}>
-                  CONTACTO
-                </Link>
-              </li>
+              
               <li style={{ position: "relative" }}>
                 <Link
                   to="/carrito"
