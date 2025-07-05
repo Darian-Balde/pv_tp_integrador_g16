@@ -372,3 +372,33 @@ body.dark .btn-filtro-abajo .btn:hover, body.dark .btn-filtro-abajo .btn:focus {
     transform: scale(1);
   }
 }
+
+@media (max-width: 768px) {
+  .botones-lista {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .btn-carrito {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+    min-width: unset;
+  }
+  .btn-editar {
+    width: 100% !important;
+    font-size: 0.95rem;
+    padding: 0.4rem 6rem;
+    justify-content: center;
+    text-align: center;
+    min-width: unset;
+  }
+  .btn-detalle
+  {
+    width: 100% !important;
+    font-size: 0.95rem;
+    padding: 0.4rem 5.28rem!important;
+    justify-content: center;
+    text-align: center;
+    min-width: unset;
+  }
+}
