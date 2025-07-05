@@ -27,8 +27,12 @@ const favoritesSlice = createSlice({
       // Guardar en localStorage cada vez que cambia
       localStorage.setItem("favorites", JSON.stringify(state.items));
     },
+    // Nuevo reducer para sincronizar desde localStorage
+    syncFavoritesFromStorage(state, action) {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { toggleFavorite } = favoritesSlice.actions;
+export const { toggleFavorite, syncFavoritesFromStorage } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

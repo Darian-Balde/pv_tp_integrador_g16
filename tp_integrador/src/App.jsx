@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "./store/ProductsSlice";
+import { useStorageSync } from "./hooks/useStorageSync"; // Importar el hook de sincronización
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -19,6 +20,9 @@ import Carrito from "./pages/Carrito";
 
 const App = () => {
   const dispatch = useDispatch();
+  
+  // Hook para sincronizar favoritos entre pestañas
+  useStorageSync();
 
   useEffect(() => {
     dispatch(fetchProducts());
