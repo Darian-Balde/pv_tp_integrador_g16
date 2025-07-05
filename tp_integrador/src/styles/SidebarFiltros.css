@@ -40,7 +40,7 @@
 .filter-list li.activa {
   font-weight: bold;
   color: #fff;
-  background: linear-gradient(90deg, #83a559 0%, #608334 100%);
+background: linear-gradient(90deg, #83a559 0%, #608334 100%);
   box-shadow: 0 2px 8px rgba(96, 131, 52, 0.13);
 }
 /* Dark mode */
