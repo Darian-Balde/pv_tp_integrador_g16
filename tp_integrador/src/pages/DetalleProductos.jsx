@@ -137,7 +137,11 @@ const DetalleProducto = () => {
               <button className="btn btn-agregar-carrito" onClick={handleAddToCart}>
                 <i className="bi bi-bag-plus"></i> Agregar al carrito
               </button>
-              <Link to={volverA} className="btn btn-volver">
+              <Link
+                to={volverA}
+                className="btn btn-volver"
+                onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+              >
                 <i className="bi bi-arrow-left-circle"></i> Volver
               </Link>
             </div>

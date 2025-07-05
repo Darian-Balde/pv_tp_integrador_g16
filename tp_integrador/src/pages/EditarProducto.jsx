@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ProductForm from "../components/ProductForm";
 import { update, remove } from "../store/ProductsSlice";
 import { useAlert } from "../components/AlertContext";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -19,6 +19,10 @@ const EditarProducto = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [pendingDelete, setPendingDelete] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   if (!producto) return <p>Producto no encontrado</p>;
 

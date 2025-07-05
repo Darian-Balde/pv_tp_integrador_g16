@@ -1,22 +1,22 @@
 .detalle-container {
   max-width: 900px;
-  margin: 0 auto 3rem; /* Menos margen arriba respecto al navbar */
+  margin: -50px auto 3rem; 
   padding: 2rem;
-  background-color: #F7FEEF; /* Fondo igual que FavoriteList */
+  background-color: #F7FEEF; 
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .detalle-contenido {
   display: flex;
   gap: 2rem;
-  background-color: #fff; /* Fondo blanco como FavoriteList */
+  background-color: #fff; 
   padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10); /* Verde de la paleta */
+  box-shadow: 0 4px 12px rgba(96, 131, 52, 0.10);
   position: relative;
 }
 
-/* Botón favorito (corazón) arriba a la derecha */
+/* Botón favorito */
 .favorite-icon.btn-fav {
   position: absolute;
   top: 18px;
@@ -24,16 +24,16 @@
   font-size: 2rem;
   background: none;
   border: none;
-  color: #97B770; /* Verde medio de la paleta */
+  color: #97B770; 
   transition: color 0.2s, transform 0.1s;
   z-index: 2;
   padding: 0.2em 0.3em;
 }
 .favorite-icon.btn-fav.active {
-  color: #e63946; /* Rojo para favorito */
+  color: #e63946; 
 }
 .favorite-icon.btn-fav:hover {
-  color: #A8CA7E; /* Verde claro al pasar el mouse */
+  color: #A8CA7E;
   transform: scale(1.15);
 }
 
@@ -53,11 +53,11 @@
   padding: 10px;
 }
 
-/* Título verde */
+
 .detalle-titulo-verde {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #608334; /* Verde fuerte de la paleta */
+  color: #608334;
   font-weight: bold;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -79,14 +79,14 @@
 .detalle-rating,
 .detalle-precio {
   font-size: 0.95rem;
-  color: #3E5C49; /* Verde oscuro para títulos de detalles */
+  color: #3E5C49; 
   margin: 2px 0;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
 
 .detalle-precio .valor {
-  color: #198754; /* Verde solo para el valor */
+  color: #198754; 
   font-weight: 600;
 }
 
@@ -171,7 +171,7 @@
 
   .detalle-botones {
     flex-direction: column;
-    gap: 0.5rem;           /* Menor espacio entre botones */
+    gap: 0.5rem;          
     align-items: stretch;
   }
   .detalle-botones .btn {
@@ -179,7 +179,7 @@
     min-width: 0;
     max-width: 100%;
     width: 100%;
-    padding: 0.5em 0.8em;  /* Botón más chico */
+    padding: 0.5em 0.8em;  
     font-size: 0.98rem;
     margin: 0;
   }

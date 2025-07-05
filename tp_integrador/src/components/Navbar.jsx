@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import womanLogo from "../assets/woman.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../store/userSlice";
+import { clearCart } from "../store/CartSlice"; 
 import "../styles/Navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,12 +18,13 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // Sincronizar logout entre pestañas
   useEffect(() => {
     const onStorage = (e) => {
       if (e.key === "logout-event") {
         localStorage.removeItem("sessionUser");
+        localStorage.removeItem("cart"); 
         dispatch(logoutUser());
+        dispatch(clearCart());
       }
     };
     window.addEventListener("storage", onStorage);
@@ -124,8 +126,10 @@ const Navbar = () => {
                   className="btn btn-danger mx-1 my-1"
                   onClick={() => {
                     localStorage.removeItem("sessionUser");
+                    localStorage.removeItem("cart");
                     dispatch(logoutUser());
-                    localStorage.setItem("logout-event", Date.now()); // Notifica a otras pestañas
+                    dispatch(clearCart()); 
+                    localStorage.setItem("logout-event", Date.now()); 
                   }}
                 >
                   Cerrar sesión
@@ -198,9 +202,11 @@ const Navbar = () => {
                       to="/login"
                       onClick={() => {
                         localStorage.removeItem("sessionUser");
+                        localStorage.removeItem("cart"); 
                         dispatch(logoutUser());
+                        dispatch(clearCart()); 
                         setIsOpen(false);
-                        localStorage.setItem("logout-event", Date.now()); // Notifica a otras pestañas
+                        localStorage.setItem("logout-event", Date.now());
                       }}
                     >
                       CERRAR SESIÓN
