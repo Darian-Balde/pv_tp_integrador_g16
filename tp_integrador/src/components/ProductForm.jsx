@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/ProductForm.css";
 
-const ProductForm = ({ onSubmit, initialData }) => {
+const categoriasEjemplo = [
+  "Electrónica",
+  "Ropa",
+  "Hogar",
+  "Juguetes",
+  "Libros"
+];
+
+const ProductForm = ({ onSubmit, initialData, categories }) => {
   const [product, setProduct] = useState({
     title: "",
     price: "",
@@ -33,14 +42,14 @@ const ProductForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(product);
-    // Eliminado setAlert
   };
+
+  const products = useSelector((state) => state.products.entities);
+  const categorias = Array.from(new Set(products.map((p) => p.category))).filter(Boolean);
 
   return (
     <form onSubmit={handleSubmit} className="product-form p-4 border rounded bg-light">
       <h2 className="mb-4">{initialData ? "Editar Producto" : "Crear Producto"}</h2>
-
-      {/* Eliminada la alerta local */}
 
       <input
         name="title"
@@ -64,14 +73,21 @@ const ProductForm = ({ onSubmit, initialData }) => {
         required
       />
 
-      <input
+      
+      <select
         name="category"
         className="form-control mb-3"
-        placeholder="Categoría"
         value={product.category}
         onChange={handleChange}
         required
-      />
+      >
+        <option value="">Seleccioná una categoría</option>
+        {categorias.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
+      </select>
 
       <input
         name="image"

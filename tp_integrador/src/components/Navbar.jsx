@@ -62,7 +62,7 @@ const Navbar = () => {
               <Link to="/favoritos" className="nav-link nav-link-tab d-flex align-items-center">Favoritos</Link>
             </li>
             <li className="nav-item">
-              <Link to="/crear" className="nav-link nav-link-tab d-flex align-items-center">Servicios</Link>
+              <Link to="/crear" className="nav-link nav-link-tab d-flex align-items-center">Crear Producto</Link>
             </li>
             <li className="nav-item position-relative">
               <Link
@@ -138,7 +138,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/crear" onClick={() => setIsOpen(false)} className={location.pathname === "/crear" ? "active-mobile" : ""}>
-                  SERVICIOS
+                  CREAR PRODUCTO
                 </Link>
               </li>
               
