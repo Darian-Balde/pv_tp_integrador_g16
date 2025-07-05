@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/FavoritesSlice";
 import { Link, useLocation } from "react-router-dom";
-import { addToCart, clearLastAdded } from "../store/CartSlice"; // Importa clearLastAdded
+import { addToCart, clearLastAdded } from "../store/CartSlice";
 import "../styles/ProductList.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SidebarFilters from "./SidebarFiltros";
@@ -13,7 +13,7 @@ const IMAGES_PER_VIEW_MOBILE = 2;
 const ProductList = () => {
   const { entities: products, loading, error } = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.items);
-  const lastAdded = useSelector((state) => state.cart.lastAdded); // Obtiene el último agregado
+  const lastAdded = useSelector((state) => state.cart.lastAdded);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -25,7 +25,7 @@ const ProductList = () => {
   const [animatingId, setAnimatingId] = useState(null);
   const timeoutRef = useRef();
 
-  const [showAlert, setShowAlert] = useState(false); // Estado local para mostrar/ocultar el alert
+  const [showAlert, setShowAlert] = useState(false); 
 
   const categoriasDisponibles = [...new Set(products.map((p) => p.category))];
 
@@ -176,48 +176,51 @@ const ProductList = () => {
         <div className="product-grid">
           {ordenarProductos(filtrarProductos()).map((p) => (
             <div className="product-card" key={p.id}>
-              <button
-                className={`favorite-icon btn-fav ${isFavorite(p.id) ? "active" : ""}`}
-                onClick={() => handleToggle(p)}
-                title={isFavorite(p.id) ? "Quitar de favoritos" : "Agregar a favoritos"}
+              <Link
+                to={`/detalle/${p.id}`}
+                state={{ from: location.pathname }}
+                className="no-underline card-link"
+                style={{ textDecoration: 'none', color: 'inherit' }}
               >
-                <i className={`bi ${isFavorite(p.id) ? "bi-heart-fill" : "bi-heart"}`}></i>
-              </button>
-              <img src={p.image} alt={p.title} className="product-image" />
-              <h2 className="product-name">{p.title}</h2>
-              <div className="mb-1">
-                {(() => {
-                  const rate = p.rating?.rate ?? 0;
-                  const full = Math.floor(rate);
-                  const half = rate - full >= 0.5;
-                  const empty = 5 - full - (half ? 1 : 0);
-                  return (
-                    <>
-                      {[...Array(full)].map((_, i) => (
-                        <i key={`f-${i}`} className="bi bi-star-fill text-warning"></i>
-                      ))}
-                      {half && <i className="bi bi-star-half text-warning"></i>}
-                      {[...Array(empty)].map((_, i) => (
-                        <i key={`e-${i}`} className="bi bi-star text-warning"></i>
-                      ))}
-                      <span className="ms-1 text-secondary" style={{ fontSize: "0.95rem" }}>
-                        {rate.toFixed(1)} ({p.rating?.count ?? 0})
-                      </span>
-                    </>
-                  );
-                })()}
-              </div>
-              <p className="product-price">${p.price.toFixed(2)}</p>
-              <div className="botones-lista">
-                <Link
-                  to={`/detalle/${p.id}`}
-                  state={{ from: location.pathname }}
-                  className="no-underline"
+                <button
+                  className={`favorite-icon btn-fav ${isFavorite(p.id) ? "active" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleToggle(p);
+                  }}
+                  title={isFavorite(p.id) ? "Quitar de favoritos" : "Agregar a favoritos"}
                 >
-                  <button className="btn-detalle">
-                    <i className="bi bi-info-circle"></i> Ver más
-                  </button>
-                </Link>
+                  <i className={`bi ${isFavorite(p.id) ? "bi-heart-fill" : "bi-heart"}`}></i>
+                </button>
+                <img src={p.image} alt={p.title} className="product-image" />
+                <h2 className="product-name">{p.title}</h2>
+                <div className="mb-1">
+                  {(() => {
+                    const rate = p.rating?.rate ?? 0;
+                    const full = Math.floor(rate);
+                    const half = rate - full >= 0.5;
+                    const empty = 5 - full - (half ? 1 : 0);
+                    return (
+                      <>
+                        {[...Array(full)].map((_, i) => (
+                          <i key={`f-${i}`} className="bi bi-star-fill text-warning"></i>
+                        ))}
+                        {half && <i className="bi bi-star-half text-warning"></i>}
+                        {[...Array(empty)].map((_, i) => (
+                          <i key={`e-${i}`} className="bi bi-star text-warning"></i>
+                        ))}
+                        <span className="ms-1 text-secondary" style={{ fontSize: "0.95rem" }}>
+                          {rate.toFixed(1)} ({p.rating?.count ?? 0})
+                        </span>
+                      </>
+                    );
+                  })()}
+                </div>
+                <p className="product-price">${p.price.toFixed(2)}</p>
+              </Link>
+              
+           <div className="botones-lista">
                 <Link to={`/editar/${p.id}`} className="no-underline">
                   <button className="btn-editar">
                     <i className="bi bi-pencil-square"></i> Editar
@@ -226,7 +229,11 @@ const ProductList = () => {
                 <button
                   className={`btn-carrito${animatingId === p.id ? " animating" : ""}`}
                   title="Agregar al carrito"
-                  onClick={() => handleAddToCart(p)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleAddToCart(p);
+                  }}
                 >
                   <i className="bi bi-cart-plus"></i> Agregar al carrito
                 </button>
