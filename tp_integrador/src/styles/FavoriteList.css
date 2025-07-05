@@ -181,9 +181,30 @@
 
   .favorite-info {
     align-items: center;
+    width: 100%;
   }
 
   .favorite-title {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+
+  .botones-lista {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+    width: 100%; 
+    margin: 0;   
+    padding: 0;  
+  }
+  .botones-lista > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   }
 }
