@@ -133,6 +133,15 @@
   transform: scale(1.15);
 }
 
+.favorites-container .botones-lista {
+  display: flex;
+  flex-direction: row; /* Horizontal en desktop */
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 /* Botón detalles igual que ProductList */
 .botones-lista {
   display: flex;
@@ -187,10 +196,8 @@
   .favorite-title {
     font-size: 1.1rem;
   }
-}
-@media (max-width: 768px) {
 
-  .botones-lista {
+  .favorites-container .botones-lista {
     flex-direction: column;
     gap: 0.7rem;
     align-items: stretch;
@@ -198,7 +205,7 @@
     margin: 0;   
     padding: 0;  
   }
-  .botones-lista > * {
+  .favorites-container .botones-lista > * {
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
