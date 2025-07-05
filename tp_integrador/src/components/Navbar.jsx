@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import womanLogo from "../assets/woman.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../store/userSlice";
@@ -16,6 +16,18 @@ const Navbar = () => {
   );
   const dispatch = useDispatch();
   const location = useLocation();
+
+  // Sincronizar logout entre pestañas
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key === "logout-event") {
+        localStorage.removeItem("sessionUser");
+        dispatch(logoutUser());
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [dispatch]);
 
   return (
     <nav className="navbar navbar-expand-lg" style={{ height: 70 }}>
@@ -113,6 +125,7 @@ const Navbar = () => {
                   onClick={() => {
                     localStorage.removeItem("sessionUser");
                     dispatch(logoutUser());
+                    localStorage.setItem("logout-event", Date.now()); // Notifica a otras pestañas
                   }}
                 >
                   Cerrar sesión
@@ -187,6 +200,7 @@ const Navbar = () => {
                         localStorage.removeItem("sessionUser");
                         dispatch(logoutUser());
                         setIsOpen(false);
+                        localStorage.setItem("logout-event", Date.now()); // Notifica a otras pestañas
                       }}
                     >
                       CERRAR SESIÓN
